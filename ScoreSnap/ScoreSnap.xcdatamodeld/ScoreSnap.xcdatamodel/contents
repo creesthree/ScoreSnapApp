@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="24.5.0" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="extension">
+        <attribute name="displayOrder" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="NO" attributeType="String"/>
+        <attribute name="playerColor" optional="NO" attributeType="String"/>
+        <attribute name="sport" optional="NO" attributeType="String" defaultValueString="Basketball"/>
+        <relationship name="teams" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Team" inverseName="player" inverseEntity="Team"/>
+    </entity>
+    <entity name="Team" representedClassName="Team" syncable="YES" codeGenerationType="extension">
+        <attribute name="displayOrder" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="NO" attributeType="String"/>
+        <attribute name="sport" optional="NO" attributeType="String" defaultValueString="Basketball"/>
+        <attribute name="teamColor" optional="NO" attributeType="String"/>
+        <relationship name="games" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Game" inverseName="team" inverseEntity="Game"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="teams" inverseEntity="Player"/>
+    </entity>
+    <entity name="Game" representedClassName="Game" syncable="YES" codeGenerationType="extension">
+        <attribute name="gameDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="gameEditDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="gameEditTime" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="gameLocation" optional="YES" attributeType="String"/>
+        <attribute name="gameTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isTie" optional="NO" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isWin" optional="NO" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="opponentName" optional="NO" attributeType="String"/>
+        <attribute name="opponentScore" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="teamScore" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="games" inverseEntity="Team"/>
     </entity>
     <elements>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
