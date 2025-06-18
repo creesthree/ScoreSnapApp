@@ -6,7 +6,18 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		69AA7D662E032FB900617516 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69CB35572E0066D900CD6BEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69CB355E2E0066D900CD6BEC;
+			remoteInfo = ScoreSnap;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		69AA7D622E032FB900617516 /* ScoreSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoreSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CB355F2E0066D900CD6BEC /* ScoreSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -15,16 +26,34 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Testing/Phase2ExtensionTests.swift,
+				Testing/Phase2NavigationTests.swift,
+				Testing/Phase2StatePersistenceTests.swift,
 			);
 			target = 69CB355E2E0066D900CD6BEC /* ScoreSnap */;
+		};
+		69AA7D6C2E03305F00617516 /* Exceptions for "ScoreSnap" folder in "ScoreSnapTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Testing/Phase2ExtensionTests.swift,
+				Testing/Phase2NavigationTests.swift,
+				Testing/Phase2StatePersistenceTests.swift,
+			);
+			target = 69AA7D612E032FB900617516 /* ScoreSnapTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		69AA7D632E032FB900617516 /* ScoreSnapTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ScoreSnapTests;
+			sourceTree = "<group>";
+		};
 		69CB35612E0066D900CD6BEC /* ScoreSnap */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				691AE6252E008620008B2BE7 /* Exceptions for "ScoreSnap" folder in "ScoreSnap" target */,
+				69AA7D6C2E03305F00617516 /* Exceptions for "ScoreSnap" folder in "ScoreSnapTests" target */,
 			);
 			path = ScoreSnap;
 			sourceTree = "<group>";
@@ -32,6 +61,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		69AA7D5F2E032FB900617516 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69CB355C2E0066D900CD6BEC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				69CB35612E0066D900CD6BEC /* ScoreSnap */,
+				69AA7D632E032FB900617516 /* ScoreSnapTests */,
 				69CB35602E0066D900CD6BEC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				69CB355F2E0066D900CD6BEC /* ScoreSnap.app */,
+				69AA7D622E032FB900617516 /* ScoreSnapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +99,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		69AA7D612E032FB900617516 /* ScoreSnapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69AA7D682E032FB900617516 /* Build configuration list for PBXNativeTarget "ScoreSnapTests" */;
+			buildPhases = (
+				69AA7D5E2E032FB900617516 /* Sources */,
+				69AA7D5F2E032FB900617516 /* Frameworks */,
+				69AA7D602E032FB900617516 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				69AA7D672E032FB900617516 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				69AA7D632E032FB900617516 /* ScoreSnapTests */,
+			);
+			name = ScoreSnapTests;
+			packageProductDependencies = (
+			);
+			productName = ScoreSnapTests;
+			productReference = 69AA7D622E032FB900617516 /* ScoreSnapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		69CB355E2E0066D900CD6BEC /* ScoreSnap */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69CB356F2E0066DC00CD6BEC /* Build configuration list for PBXNativeTarget "ScoreSnap" */;
@@ -93,6 +154,10 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					69AA7D612E032FB900617516 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 69CB355E2E0066D900CD6BEC;
+					};
 					69CB355E2E0066D900CD6BEC = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -113,11 +178,19 @@
 			projectRoot = "";
 			targets = (
 				69CB355E2E0066D900CD6BEC /* ScoreSnap */,
+				69AA7D612E032FB900617516 /* ScoreSnapTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		69AA7D602E032FB900617516 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69CB355D2E0066D900CD6BEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +201,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		69AA7D5E2E032FB900617516 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69CB355B2E0066D900CD6BEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,7 +217,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		69AA7D672E032FB900617516 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 69CB355E2E0066D900CD6BEC /* ScoreSnap */;
+			targetProxy = 69AA7D662E032FB900617516 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		69AA7D692E032FB900617516 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M9H88K95N7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = UseFoundry.ScoreSnapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScoreSnap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ScoreSnap";
+			};
+			name = Debug;
+		};
+		69AA7D6A2E032FB900617516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M9H88K95N7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = UseFoundry.ScoreSnapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScoreSnap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ScoreSnap";
+			};
+			name = Release;
+		};
 		69CB356D2E0066DC00CD6BEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -320,6 +444,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		69AA7D682E032FB900617516 /* Build configuration list for PBXNativeTarget "ScoreSnapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69AA7D692E032FB900617516 /* Debug */,
+				69AA7D6A2E032FB900617516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		69CB355A2E0066D900CD6BEC /* Build configuration list for PBXProject "ScoreSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

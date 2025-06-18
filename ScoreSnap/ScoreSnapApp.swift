@@ -7,14 +7,16 @@
 
 //Stubbed Build Phase 1 teset code
 import SwiftUI
+
 @main
 struct ScoreSnapApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            TestCoreDataView()
+            MainTabView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(AppContext(viewContext: persistenceController.container.viewContext))
         }
     }
 }
