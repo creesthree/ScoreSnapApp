@@ -141,6 +141,7 @@ struct Theme {
             case "gray", "grey": return .gray
             case "black": return .black
             case "white": return .white
+            case "brown": return .brown
             default: return nil
             }
         }

@@ -102,10 +102,12 @@ struct Constants {
     // MARK: - Default Values
     struct Defaults {
         static let playerColors: [Color] = [
-            .blue, .red, .green, .orange, .purple, .pink, .teal, .indigo
+            .black, .red, .pink, .orange, .yellow, .green,
+            .teal, .blue, .indigo, .purple, .brown, .gray
         ]
         static let teamColors: [Color] = [
-            .red, .blue, .green, .orange, .purple, .pink, .teal, .indigo, .yellow, .gray
+            .black, .red, .pink, .orange, .yellow, .green,
+            .teal, .blue, .indigo, .purple, .brown, .gray
         ]
         static let defaultPlayerColor: Color = .blue
         static let defaultTeamColor: Color = .red

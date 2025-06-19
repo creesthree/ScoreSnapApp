@@ -75,9 +75,13 @@ class AppContext: ObservableObject {
     // MARK: - Context Switching Methods
     
     func switchToPlayer(_ player: Player) {
-        currentPlayer = player
-        // When switching players, default to their first team
-        currentTeam = fetchFirstTeam(for: player)
+        // Only change team if we're switching to a different player
+        if currentPlayer != player {
+            currentPlayer = player
+            // When switching to a different player, default to their first team
+            currentTeam = fetchFirstTeam(for: player)
+        }
+        // If it's the same player, don't change anything
     }
     
     func switchToTeam(_ team: Team) {

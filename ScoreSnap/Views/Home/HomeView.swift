@@ -15,6 +15,8 @@ struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
     @State private var showingGameEdit = false
     @State private var selectedGame: Game?
+    @State private var showingValidationAlert = false
+    @State private var validationMessage = ""
     
     init() {
         // We'll initialize with a placeholder context, but it will be replaced by the environment
@@ -44,6 +46,11 @@ struct HomeView: View {
                 if let game = selectedGame {
                     GameEditView(game: game)
                 }
+            }
+            .alert("Validation Error", isPresented: $showingValidationAlert) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(validationMessage)
             }
         }
     }

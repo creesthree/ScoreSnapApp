@@ -56,6 +56,8 @@ struct TeamDropdown: View {
         .sheet(isPresented: $showingTeamPicker) {
             TeamPickerSheet(teams: Array(teams))
         }
+        .accessibilityLabel("Select team for \(player.name ?? "player")")
+        .accessibilityHint("Tap to choose a team")
     }
 }
 

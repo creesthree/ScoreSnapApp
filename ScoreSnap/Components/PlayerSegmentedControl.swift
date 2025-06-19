@@ -80,6 +80,8 @@ struct PlayerSegmentButton: View {
                 .cornerRadius(Theme.CornerRadius.sm)
         }
         .animation(Theme.Animation.quick, value: isSelected)
+        .accessibilityLabel("Player \(player.name ?? "Unknown")")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
 

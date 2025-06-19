@@ -114,6 +114,7 @@ struct FloatingActionButton: View {
 // MARK: - Placeholder Views
 
 // HomeView is now implemented in Views/Home/HomeView.swift
+// PlayersView is now implemented in Views/Players/PlayersView.swift
 
 struct GamesView: View {
     @EnvironmentObject var appContext: AppContext
@@ -131,27 +132,6 @@ struct GamesView: View {
                 Spacer()
             }
             .navigationTitle(Constants.TabBar.gamesTitle)
-            .background(Theme.Colors.background)
-        }
-    }
-}
-
-struct PlayersView: View {
-    @EnvironmentObject var appContext: AppContext
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                if appContext.needsSetup {
-                    SetupPlaceholderView()
-                } else {
-                    Text("Players View - Coming Soon")
-                        .font(Theme.Typography.title2)
-                        .foregroundColor(Theme.Colors.secondaryText)
-                }
-                Spacer()
-            }
-            .navigationTitle(Constants.TabBar.playersTitle)
             .background(Theme.Colors.background)
         }
     }
