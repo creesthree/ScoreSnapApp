@@ -10,7 +10,7 @@ import SwiftUI
 struct MainTabView: View {
     @EnvironmentObject var appContext: AppContext
     @State private var selectedTab = 0
-    @State private var showingCameraOptions = false
+    @State private var showingUploadView = false
     
     var body: some View {
         ZStack {
@@ -45,25 +45,26 @@ struct MainTabView: View {
                     Spacer()
                     
                     FloatingActionButton(
-                        showingCameraOptions: $showingCameraOptions
+                        showingUploadView: $showingUploadView
                     )
                     .padding(.trailing, Theme.Spacing.md)
                     .padding(.bottom, 100) // Above tab bar
                 }
             }
         }
+        .sheet(isPresented: $showingUploadView) {
+            UploadView()
+        }
     }
 }
 
 struct FloatingActionButton: View {
-    @Binding var showingCameraOptions: Bool
+    @Binding var showingUploadView: Bool
     @State private var isPressed = false
     
     var body: some View {
         Button(action: {
-            // For now, just show camera options
-            // Later this will be quick camera action
-            showingCameraOptions.toggle()
+            showingUploadView = true
         }) {
             Image(systemName: Constants.TabBar.cameraIcon)
                 .font(.title2)
@@ -80,34 +81,10 @@ struct FloatingActionButton: View {
                 }
             },
             perform: {
-                // Long press action - show camera options menu
-                showingCameraOptions = true
+                // Long press action - same as tap for now
+                showingUploadView = true
             }
         )
-        .confirmationDialog(
-            "Add Game Score",
-            isPresented: $showingCameraOptions,
-            titleVisibility: .visible
-        ) {
-            Button("Take Photo") {
-                // TODO: Implement camera capture
-                print("Take Photo tapped")
-            }
-            
-            Button("Choose from Library") {
-                // TODO: Implement photo library selection
-                print("Choose from Library tapped")
-            }
-            
-            Button("Enter Manually") {
-                // TODO: Implement manual entry
-                print("Enter Manually tapped")
-            }
-            
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("How would you like to add the game score?")
-        }
     }
 }
 

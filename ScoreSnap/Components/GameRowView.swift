@@ -38,73 +38,73 @@ struct GameRowView: View {
         }
     }
     
+    private var compactDateText: String {
+        guard let gameDate = game.gameDate else { return "" }
+        
+        if gameDate.isToday {
+            return "Today"
+        } else if Calendar.current.isDateInYesterday(gameDate) {
+            return "Yesterday"
+        } else if gameDate.isThisWeek {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE" // Day of week
+            return formatter.string(from: gameDate)
+        } else {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "M/d"
+            return formatter.string(from: gameDate)
+        }
+    }
+    
     var body: some View {
         Button(action: onTap) {
-            HStack(spacing: Theme.Spacing.md) {
-                // Game Result Indicator
-                VStack {
-                    Text(resultText)
-                        .font(Theme.Typography.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .frame(width: 24, height: 24)
-                        .background(resultColor)
-                        .clipShape(Circle())
-                    
-                    Spacer()
-                }
+            HStack(spacing: Theme.Spacing.sm) {
+                // Compact Game Result Indicator
+                Text(resultText)
+                    .font(Theme.Typography.caption)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(width: 20, height: 20)
+                    .background(resultColor)
+                    .clipShape(Circle())
                 
-                // Game Details
-                VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
-                    HStack {
-                        Text("vs \(game.opponentName ?? "Unknown")")
-                            .font(Theme.Typography.body)
-                            .fontWeight(.medium)
-                            .foregroundColor(Theme.Colors.primaryText)
-                        
-                        Spacer()
-                        
-                        // Score
-                        Text("\(game.teamScore) - \(game.opponentScore)")
-                            .font(Theme.Typography.scoreDisplay)
-                            .foregroundColor(Theme.Colors.primaryText)
-                    }
+                // Game Details - Single Line Layout
+                HStack {
+                    // Opponent and Score
+                    Text("vs \(game.opponentName ?? "Unknown")")
+                        .font(Theme.Typography.body)
+                        .fontWeight(.medium)
+                        .foregroundColor(Theme.Colors.primaryText)
+                        .lineLimit(1)
                     
-                    HStack {
-                        // Date
-                        if let gameDate = game.gameDate {
-                            Text(gameDate.gameDisplayFormat)
-                                .font(Theme.Typography.caption)
-                                .foregroundColor(Theme.Colors.secondaryText)
-                        }
-                        
-                        Spacer()
-                        
-                        // Location (if available)
-                        if let location = game.gameLocation, !location.isEmpty {
-                            Text(location)
-                                .font(Theme.Typography.caption)
-                                .foregroundColor(Theme.Colors.secondaryText)
-                                .lineLimit(1)
-                        }
-                    }
+                    Spacer(minLength: Theme.Spacing.sm)
+                    
+                    // Score
+                    Text("\(game.teamScore) - \(game.opponentScore)")
+                        .font(Theme.Typography.scoreDisplay)
+                        .foregroundColor(Theme.Colors.primaryText)
+                        .fontWeight(.semibold)
+                    
+                    Spacer(minLength: Theme.Spacing.sm)
+                    
+                    // Compact Date
+                    Text(compactDateText)
+                        .font(Theme.Typography.caption)
+                        .foregroundColor(Theme.Colors.secondaryText)
+                        .lineLimit(1)
                 }
                 
                 // Chevron
                 Image(systemName: "chevron.right")
-                    .font(.caption)
+                    .font(.caption2)
                     .foregroundColor(Theme.Colors.secondaryText)
             }
-            .padding(Theme.Spacing.md)
+            .padding(Theme.Spacing.sm)
             .background(Theme.Colors.cardBackground)
-            .cornerRadius(Theme.CornerRadius.md)
+            .cornerRadius(Theme.CornerRadius.sm)
         }
         .buttonStyle(PlainButtonStyle())
     }
-}
-
-enum GameResult {
-    case win, loss, tie
 }
 
 struct GameRowView_Previews: PreviewProvider {
@@ -123,6 +123,16 @@ struct GameRowView_Previews: PreviewProvider {
             // Tie example
             GameRowView(game: sampleTieGame) {
                 print("Tie game tapped")
+            }
+            
+            // Today's game
+            GameRowView(game: sampleTodayGame) {
+                print("Today's game tapped")
+            }
+            
+            // Yesterday's game
+            GameRowView(game: sampleYesterdayGame) {
+                print("Yesterday's game tapped")
             }
         }
         .padding()
@@ -167,6 +177,32 @@ struct GameRowView_Previews: PreviewProvider {
         game.isWin = false
         game.isTie = true
         game.gameDate = Date().addingTimeInterval(-259200) // 3 days ago
+        return game
+    }
+    
+    static var sampleTodayGame: Game {
+        let context = PersistenceController.preview.container.viewContext
+        let game = Game(context: context)
+        game.id = UUID()
+        game.opponentName = "Heat"
+        game.teamScore = 88
+        game.opponentScore = 82
+        game.isWin = true
+        game.isTie = false
+        game.gameDate = Date() // Today
+        return game
+    }
+    
+    static var sampleYesterdayGame: Game {
+        let context = PersistenceController.preview.container.viewContext
+        let game = Game(context: context)
+        game.id = UUID()
+        game.opponentName = "Nets"
+        game.teamScore = 91
+        game.opponentScore = 87
+        game.isWin = true
+        game.isTie = false
+        game.gameDate = Date().addingTimeInterval(-86400) // Yesterday
         return game
     }
 }
