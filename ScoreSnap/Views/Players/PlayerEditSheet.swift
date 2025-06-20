@@ -57,16 +57,6 @@ struct PlayerEditSheet: View {
                                 )
                             }
                         }
-                        // Color preview
-                        HStack {
-                            Circle()
-                                .fill(selectedColor.color)
-                                .frame(width: 30, height: 30)
-                            Text("Preview")
-                                .font(Theme.Typography.caption)
-                                .foregroundColor(Theme.Colors.secondaryText)
-                            Spacer()
-                        }
                     }
                 }
             }

@@ -20,7 +20,7 @@ class ServicesManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        servicesManager = ServicesManager()
+        servicesManager = ServicesManager.shared
         mockViewController = ServicesManagerMockViewController()
         cancellables = Set<AnyCancellable>()
     }
@@ -222,19 +222,16 @@ class ServicesManagerTests: XCTestCase {
     // MARK: - Core Data Integration Tests
     
     func testServiceDataPersistence() {
-        // Test service configurations and data properly stored
+        // Test service configurations and data are properly managed
         
         // Update API limits
         let testLimits = APILimits(perMinute: 5, perHour: 25, perDay: 50)
         servicesManager.apiLimiter.updateLimits(testLimits)
         
-        // Create new services manager to simulate app restart
-        let newServicesManager = ServicesManager()
-        
-        // Should have same limits
-        XCTAssertEqual(newServicesManager.apiLimiter.limits.perMinute, testLimits.perMinute)
-        XCTAssertEqual(newServicesManager.apiLimiter.limits.perHour, testLimits.perHour)
-        XCTAssertEqual(newServicesManager.apiLimiter.limits.perDay, testLimits.perDay)
+        // Verify limits are set correctly on the singleton
+        XCTAssertEqual(servicesManager.apiLimiter.limits.perMinute, testLimits.perMinute)
+        XCTAssertEqual(servicesManager.apiLimiter.limits.perHour, testLimits.perHour)
+        XCTAssertEqual(servicesManager.apiLimiter.limits.perDay, testLimits.perDay)
     }
     
     func testServiceDataCleanup() {
@@ -485,9 +482,10 @@ class ServicesManagerTests: XCTestCase {
         // Test services properly clean up when no longer needed
         let initialMemory = getMemoryUsage()
         
-        // Create and destroy multiple service managers
+        // Test singleton pattern - all references should be the same instance
         for _ in 0..<10 {
-            let tempManager = ServicesManager()
+            let tempManager = ServicesManager.shared
+            XCTAssertTrue(tempManager === servicesManager)
             tempManager.clearAllCaches()
         }
         
@@ -585,9 +583,10 @@ class ServicesManagerTests: XCTestCase {
     // MARK: - Reliability Tests
     
     func testServiceInitializationReliability() {
-        // Test services consistently initialize correctly
+        // Test singleton pattern ensures consistent initialization
         for _ in 0..<10 {
-            let tempManager = ServicesManager()
+            let tempManager = ServicesManager.shared
+            XCTAssertTrue(tempManager === servicesManager)
             XCTAssertNotNil(tempManager.photoService)
             XCTAssertNotNil(tempManager.locationService)
             XCTAssertNotNil(tempManager.apiLimiter)
@@ -637,14 +636,15 @@ class ServicesManagerTests: XCTestCase {
     }
     
     func testConfigurationConsistency() {
-        // Test service configurations remain stable across app sessions
+        // Test service configurations remain stable with singleton pattern
         let testLimits = APILimits(perMinute: 5, perHour: 25, perDay: 50)
         servicesManager.apiLimiter.updateLimits(testLimits)
         
         // Create new instance
-        let newManager = ServicesManager()
+        let newManager = ServicesManager.shared
         
-        // Should have same configuration
+        // Should have same configuration (singleton pattern)
+        XCTAssertTrue(newManager === servicesManager)
         XCTAssertEqual(newManager.apiLimiter.limits.perMinute, testLimits.perMinute)
         XCTAssertEqual(newManager.apiLimiter.limits.perHour, testLimits.perHour)
         XCTAssertEqual(newManager.apiLimiter.limits.perDay, testLimits.perDay)

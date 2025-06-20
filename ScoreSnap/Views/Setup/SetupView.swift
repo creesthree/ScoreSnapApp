@@ -17,12 +17,11 @@ struct SetupView: View {
     @Environment(\.dismiss) private var dismiss
     
     @StateObject private var viewModel: SetupViewModel
-    @StateObject private var servicesManager = ServicesManager()
     
     init() {
         self._viewModel = StateObject(wrappedValue: SetupViewModel(
             viewContext: PersistenceController.shared.container.viewContext,
-            servicesManager: ServicesManager()
+            servicesManager: ServicesManager.shared
         ))
     }
     

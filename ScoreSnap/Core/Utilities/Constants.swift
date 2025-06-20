@@ -30,7 +30,7 @@ enum TeamColor: String, CaseIterable {
         case .green: return .green
         case .orange: return .orange
         case .purple: return .purple
-        case .pink: return .pink
+        case .pink: return Color(red: 1.0, green: 0.75, blue: 0.8) // Light pink
         case .teal: return .teal
         case .indigo: return .indigo
         case .yellow: return .yellow
@@ -143,6 +143,6 @@ struct Constants {
     struct Defaults {
         static let teamColors: [TeamColor] = TeamColor.allCases
         static let defaultTeamColor: TeamColor = .blue
-        static let defaultPlayerColor: TeamColor = .red
+        static let defaultPlayerColor: TeamColor = .blue
     }
 } 

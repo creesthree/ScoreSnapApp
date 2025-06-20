@@ -48,13 +48,6 @@ struct DateTimePickerView: View {
                     .labelsHidden()
                 }
             }
-            
-            // Quick Date Options
-            QuickDateOptions(
-                onDateSelected: { date in
-                    gameDate = date
-                }
-            )
         }
     }
 }

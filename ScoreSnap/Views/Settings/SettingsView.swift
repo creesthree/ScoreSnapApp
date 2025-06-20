@@ -16,7 +16,7 @@ struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     
-    @StateObject private var servicesManager = ServicesManager()
+    private let servicesManager = ServicesManager.shared
     @State private var showingResetAlert = false
     @State private var showingPermissionSettings = false
     

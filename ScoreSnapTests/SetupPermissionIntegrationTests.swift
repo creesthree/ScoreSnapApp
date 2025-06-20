@@ -34,7 +34,7 @@ class SetupPermissionIntegrationTests: XCTestCase {
         }
         
         testContext = container.viewContext
-        servicesManager = ServicesManager()
+        servicesManager = ServicesManager.shared
         viewModel = SetupViewModel(viewContext: testContext, servicesManager: servicesManager)
         
         // Clear UserDefaults for each test

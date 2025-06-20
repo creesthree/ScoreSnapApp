@@ -22,6 +22,7 @@ struct ScoreInputView: View {
         VStack(alignment: .leading, spacing: Theme.Spacing.md) {
             Text("Score")
                 .font(Theme.Typography.body)
+                .fontWeight(.bold)
                 .foregroundColor(Theme.Colors.primaryText)
             
             HStack(spacing: Theme.Spacing.lg) {
@@ -67,20 +68,6 @@ struct ScoreInputView: View {
                             opponentScoreText = String(opponentScore)
                         }
                 }
-            }
-            
-            // Smart Score Suggestions
-            if gameResult != .tie {
-                SmartScoreSuggestions(
-                    gameResult: gameResult,
-                    onSuggestionTapped: { suggestedTeam, suggestedOpponent in
-                        teamScore = suggestedTeam
-                        opponentScore = suggestedOpponent
-                        teamScoreText = String(suggestedTeam)
-                        opponentScoreText = String(suggestedOpponent)
-                        onScoreChange()
-                    }
-                )
             }
         }
         .alert("Invalid Score", isPresented: $showingValidationAlert) {

@@ -35,13 +35,19 @@ class SetupViewTests: XCTestCase {
         }
         
         testContext = container.viewContext
-        servicesManager = ServicesManager()
+        servicesManager = ServicesManager.shared
         viewModel = SetupViewModel(viewContext: testContext, servicesManager: servicesManager)
         
         // Clear UserDefaults for each test
         UserDefaults.standard.removeObject(forKey: "hasCompletedSetup")
         UserDefaults.standard.removeObject(forKey: "hasSeenOnboarding")
         UserDefaults.standard.removeObject(forKey: "setupSkipped")
+        
+        // Clean up any existing data
+        let request: NSFetchRequest<NSFetchRequestResult> = Game.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        try? testContext.execute(deleteRequest)
+        try? testContext.save()
     }
     
     override func tearDownWithError() throws {

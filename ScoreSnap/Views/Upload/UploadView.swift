@@ -29,7 +29,9 @@ struct UploadView: View {
                     Text("Manual").tag(1)
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding()
+                .padding(.horizontal)
+                .padding(.top)
+                .padding(.bottom, Theme.Spacing.sm)
                 
                 // Content based on selected tab
                 if selectedTab == 0 {
@@ -76,45 +78,50 @@ struct ManualEntryView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: Theme.Spacing.lg) {
-                // Team Selection Header
-                if let currentTeam = appContext.currentTeam {
-                    TeamSelectionHeader(team: currentTeam)
-                } else {
-                    NoTeamSelectedView()
-                }
+            VStack(spacing: Theme.Spacing.md) {
+                // Player & Team Selection
+                PlayerSelectionSection()
                 
                 // Manual Entry Form
                 if appContext.currentTeam != nil {
                     ManualEntryForm(viewModel: viewModel)
+                } else {
+                    NoTeamSelectedView()
                 }
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.bottom, Theme.Spacing.lg)
         }
         .background(Theme.Colors.background)
     }
 }
 
-struct TeamSelectionHeader: View {
-    let team: Team
+struct PlayerSelectionSection: View {
+    @EnvironmentObject var appContext: AppContext
     
     var body: some View {
-        VStack(spacing: Theme.Spacing.sm) {
+        VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
             HStack {
-                Circle()
-                    .fill(Theme.TeamColors.color(from: team.teamColor))
-                    .frame(width: 24, height: 24)
-                
-                Text(team.name ?? "Unknown Team")
-                    .font(Theme.Typography.title3)
-                    .fontWeight(.semibold)
-                
+                Text("Player")
+                    .font(Theme.Typography.body)
+                    .foregroundColor(Theme.Colors.primaryText)
                 Spacer()
             }
             
-            Text("Adding game for this team")
-                .font(Theme.Typography.caption)
-                .foregroundColor(Theme.Colors.secondaryText)
+            PlayerSegmentedControl()
+            
+            // Team Dropdown for selected player
+            if let currentPlayer = appContext.currentPlayer {
+                HStack {
+                    Text("Team")
+                        .font(Theme.Typography.body)
+                        .foregroundColor(Theme.Colors.primaryText)
+                    Spacer()
+                }
+                .padding(.top, Theme.Spacing.sm)
+                
+                TeamDropdown(player: currentPlayer)
+            }
         }
         .padding()
         .background(Theme.Colors.cardBackground)
@@ -125,19 +132,25 @@ struct TeamSelectionHeader: View {
 
 struct NoTeamSelectedView: View {
     var body: some View {
-        VStack(spacing: Theme.Spacing.md) {
-            Image(systemName: "person.3.fill")
-                .font(.system(size: 48))
-                .foregroundColor(Theme.Colors.secondaryText)
+        VStack(spacing: Theme.Spacing.sm) {
+            HStack {
+                Image(systemName: "person.3.fill")
+                    .font(.title3)
+                    .foregroundColor(Theme.Colors.secondaryText)
+                
+                Text("No Team Selected")
+                    .font(Theme.Typography.headline)
+                    .foregroundColor(Theme.Colors.primaryText)
+                
+                Spacer()
+            }
             
-            Text("No Team Selected")
-                .font(Theme.Typography.title3)
-                .foregroundColor(Theme.Colors.primaryText)
-            
-            Text("Please select a team from the Players tab before adding a game")
-                .font(Theme.Typography.body)
-                .foregroundColor(Theme.Colors.secondaryText)
-                .multilineTextAlignment(.center)
+            HStack {
+                Text("Please select a team from above before adding a game")
+                    .font(Theme.Typography.caption)
+                    .foregroundColor(Theme.Colors.secondaryText)
+                Spacer()
+            }
         }
         .padding()
         .background(Theme.Colors.cardBackground)
@@ -151,12 +164,29 @@ struct ManualEntryForm: View {
     @ObservedObject var viewModel: UploadViewModel
     
     var body: some View {
-        VStack(spacing: Theme.Spacing.lg) {
-            // Game Result Selection
-            WinLossTieSelector(selectedResult: $viewModel.gameResult)
-                .onChange(of: viewModel.gameResult) { _, _ in
-                    viewModel.assignSmartScores()
+        VStack(spacing: Theme.Spacing.md) {
+            // Game Result Selection - Radio Button Style
+            VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
+                HStack {
+                    Text("Game Result")
+                        .font(Theme.Typography.body)
+                        .fontWeight(.bold)
+                        .foregroundColor(Theme.Colors.primaryText)
+                    Spacer()
                 }
+                
+                HStack(spacing: Theme.Spacing.md) {
+                    ForEach(GameResult.allCases, id: \.self) { result in
+                        RadioButtonRow(
+                            result: result,
+                            isSelected: viewModel.gameResult == result
+                        ) {
+                            viewModel.gameResult = result
+                            viewModel.assignSmartScores()
+                        }
+                    }
+                }
+            }
             
             // Score Input
             ScoreInputView(
@@ -174,51 +204,95 @@ struct ManualEntryForm: View {
                 viewModel.isOpponentNameValid = isValid
             }
             
-            // Date & Time
-            DateTimePickerView(
-                gameDate: $viewModel.gameDate,
-                gameTime: $viewModel.gameTime
-            )
-            
-            // Location (Optional)
+            // Date & Time - Left Justified Header
             VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-                Text("Location (Optional)")
-                    .font(Theme.Typography.body)
-                    .foregroundColor(Theme.Colors.primaryText)
+                HStack {
+                    Text("Game Date & Time")
+                        .font(Theme.Typography.body)
+                        .fontWeight(.bold)
+                        .foregroundColor(Theme.Colors.primaryText)
+                    Spacer()
+                }
                 
-                TextField("Enter game location", text: $viewModel.gameLocation)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                // Compact Date and Time Pickers
+                VStack(spacing: Theme.Spacing.sm) {
+                    HStack(spacing: Theme.Spacing.md) {
+                        VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                            Text("Date")
+                                .font(Theme.Typography.caption)
+                                .foregroundColor(Theme.Colors.secondaryText)
+                            
+                            DatePicker(
+                                "Game Date",
+                                selection: $viewModel.gameDate,
+                                displayedComponents: .date
+                            )
+                            .datePickerStyle(CompactDatePickerStyle())
+                            .labelsHidden()
+                        }
+                        
+                        VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                            Text("Time")
+                                .font(Theme.Typography.caption)
+                                .foregroundColor(Theme.Colors.secondaryText)
+                            
+                            DatePicker(
+                                "Game Time",
+                                selection: $viewModel.gameTime,
+                                displayedComponents: .hourAndMinute
+                            )
+                            .datePickerStyle(CompactDatePickerStyle())
+                            .labelsHidden()
+                        }
+                    }
+                }
             }
             
-            // Notes (Optional)
-            VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-                Text("Notes (Optional)")
-                    .font(Theme.Typography.body)
-                    .foregroundColor(Theme.Colors.primaryText)
+            // Location and Notes in compact layout
+            HStack(spacing: Theme.Spacing.md) {
+                // Location (Optional)
+                VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                    Text("Location")
+                        .font(Theme.Typography.caption)
+                        .foregroundColor(Theme.Colors.secondaryText)
+                    
+                    TextField("Optional", text: $viewModel.gameLocation)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .font(.caption)
+                }
                 
-                TextField("Add game notes", text: $viewModel.gameNotes, axis: .vertical)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .lineLimit(3...6)
+                // Notes (Optional)
+                VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                    Text("Notes")
+                        .font(Theme.Typography.caption)
+                        .foregroundColor(Theme.Colors.secondaryText)
+                    
+                    TextField("Optional", text: $viewModel.gameNotes)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .font(.caption)
+                }
             }
             
-            // Save Button
+            // Save Button - Compact
             Button(action: {
                 viewModel.createGame(for: appContext.currentTeam)
             }) {
-                HStack {
+                HStack(spacing: Theme.Spacing.xs) {
                     if viewModel.isLoading {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                            .scaleEffect(0.8)
+                            .scaleEffect(0.7)
                     } else {
                         Image(systemName: "checkmark.circle.fill")
+                            .font(.caption)
                     }
                     
                     Text(viewModel.isLoading ? "Saving..." : "Save Game")
+                        .font(Theme.Typography.body)
                         .fontWeight(.semibold)
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: Constants.UI.standardButtonHeight)
+                .frame(height: 44)
                 .background(viewModel.isFormValid ? Theme.Colors.primary : Theme.Colors.secondaryText)
                 .foregroundColor(.white)
                 .cornerRadius(Theme.CornerRadius.md)
@@ -230,11 +304,42 @@ struct ManualEntryForm: View {
     }
 }
 
+struct RadioButtonRow: View {
+    let result: GameResult
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: Theme.Spacing.sm) {
+                // Radio button circle
+                ZStack {
+                    Circle()
+                        .stroke(isSelected ? Theme.Colors.primary : Theme.Colors.secondaryText, lineWidth: 2)
+                        .frame(width: 20, height: 20)
+                    
+                    if isSelected {
+                        Circle()
+                            .fill(Theme.Colors.primary)
+                            .frame(width: 12, height: 12)
+                    }
+                }
+                
+                // Result text
+                Text(result.displayText)
+                    .font(Theme.Typography.body)
+                    .foregroundColor(Theme.Colors.primaryText)
+            }
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
 struct CameraUploadView: View {
     var body: some View {
         VStack(spacing: Theme.Spacing.lg) {
             Image(systemName: "camera.fill")
-                .font(.system(size: 64))
+                .font(.system(size: 48))
                 .foregroundColor(Theme.Colors.secondaryText)
             
             Text("Camera Upload")

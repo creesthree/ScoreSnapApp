@@ -1,0 +1,438 @@
+{
+  "" : {
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap-master.dia",
+    "emit-module-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap-master-emit-module.dia",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap-master.swiftdeps"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Components/DateTimePickerView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/DateTimePickerView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/DateTimePickerView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/DateTimePickerView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/DateTimePickerView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/DateTimePickerView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/DateTimePickerView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/DateTimePickerView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/DateTimePickerView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Components/GameRowView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GameRowView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GameRowView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GameRowView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GameRowView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GameRowView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GameRowView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GameRowView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GameRowView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Components/MainTabView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/MainTabView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/MainTabView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/MainTabView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/MainTabView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/MainTabView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/MainTabView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/MainTabView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/MainTabView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Components/OpponentNameField.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OpponentNameField.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OpponentNameField.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OpponentNameField.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OpponentNameField.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OpponentNameField.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OpponentNameField.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OpponentNameField.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OpponentNameField~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Components/PlayerSegmentedControl.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerSegmentedControl.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerSegmentedControl.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerSegmentedControl.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerSegmentedControl.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerSegmentedControl.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerSegmentedControl.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerSegmentedControl.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerSegmentedControl~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Components/ScoreInputView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreInputView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreInputView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreInputView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreInputView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreInputView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreInputView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreInputView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreInputView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Components/TeamDropdown.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamDropdown.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamDropdown.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamDropdown.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamDropdown.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamDropdown.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamDropdown.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamDropdown.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamDropdown~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Components/TeamRecordView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamRecordView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamRecordView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamRecordView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamRecordView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamRecordView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamRecordView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamRecordView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamRecordView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Components/WinLossTieSelector.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/WinLossTieSelector.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/WinLossTieSelector.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/WinLossTieSelector.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/WinLossTieSelector.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/WinLossTieSelector.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/WinLossTieSelector.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/WinLossTieSelector.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/WinLossTieSelector~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/ContentView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ContentView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ContentView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ContentView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ContentView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ContentView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ContentView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Data/PersistenceController.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PersistenceController.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PersistenceController.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PersistenceController.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PersistenceController.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PersistenceController.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PersistenceController.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PersistenceController.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PersistenceController~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Data/Services/APILimiter.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/APILimiter.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/APILimiter.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/APILimiter.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/APILimiter.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/APILimiter.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/APILimiter.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/APILimiter.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/APILimiter~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Data/Services/KeychainService.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/KeychainService.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/KeychainService.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/KeychainService.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/KeychainService.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/KeychainService.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/KeychainService.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/KeychainService.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/KeychainService~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Data/Services/LocationService.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/LocationService.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/LocationService.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/LocationService.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/LocationService.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/LocationService.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/LocationService.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/LocationService.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/LocationService~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Data/Services/OCRService.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OCRService.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OCRService.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OCRService.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OCRService.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OCRService.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OCRService.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OCRService.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/OCRService~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Data/Services/PhotoService.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PhotoService.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PhotoService.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PhotoService.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PhotoService.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PhotoService.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PhotoService.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PhotoService.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PhotoService~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Data/Services/ServicesManager.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ServicesManager.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ServicesManager.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ServicesManager.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ServicesManager.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ServicesManager.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ServicesManager.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ServicesManager.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ServicesManager~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Utilities/AppContext.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/AppContext.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/AppContext.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/AppContext.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/AppContext.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/AppContext.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/AppContext.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/AppContext.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/AppContext~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Utilities/Constants.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Constants.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Constants.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Constants.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Constants.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Constants.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Constants.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Constants.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Constants~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Utilities/Extensions.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Extensions.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Extensions.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Extensions.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Extensions.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Extensions.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Extensions.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Extensions.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Extensions~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Core/Utilities/SecurityUtils.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SecurityUtils.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SecurityUtils.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SecurityUtils.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SecurityUtils.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SecurityUtils.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SecurityUtils.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SecurityUtils.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SecurityUtils~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/ScoreSnapApp.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnapApp.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnapApp.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnapApp.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnapApp.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnapApp.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnapApp.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnapApp.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnapApp~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Styles/Theme.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Theme.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Theme.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Theme.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Theme.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Theme.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Theme.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Theme.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Theme~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Home/HomeView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Home/HomeViewModel.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeViewModel.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeViewModel.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeViewModel.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeViewModel.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeViewModel.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeViewModel.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeViewModel.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/HomeViewModel~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Players/PlayerEditSheet.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerEditSheet.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerEditSheet.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerEditSheet.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerEditSheet.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerEditSheet.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerEditSheet.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerEditSheet.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayerEditSheet~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Players/PlayersView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Players/PlayersViewModel.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersViewModel.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersViewModel.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersViewModel.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersViewModel.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersViewModel.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersViewModel.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersViewModel.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/PlayersViewModel~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Players/TeamEditSheet.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamEditSheet.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamEditSheet.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamEditSheet.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamEditSheet.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamEditSheet.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamEditSheet.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamEditSheet.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TeamEditSheet~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Settings/SettingsView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SettingsView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SettingsView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SettingsView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SettingsView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SettingsView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Setup/SetupView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Setup/SetupViewModel.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupViewModel.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupViewModel.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupViewModel.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupViewModel.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupViewModel.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupViewModel.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupViewModel.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/SetupViewModel~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Testing/TestCoreDataView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TestCoreDataView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TestCoreDataView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TestCoreDataView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TestCoreDataView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TestCoreDataView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TestCoreDataView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TestCoreDataView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/TestCoreDataView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Upload/UploadView.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadView.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadView.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadView.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadView.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadView.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadView.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadView.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadView~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/ScoreSnap/Views/Upload/UploadViewModel.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadViewModel.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadViewModel.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadViewModel.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadViewModel.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadViewModel.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadViewModel.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadViewModel.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/UploadViewModel~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/DerivedSources/CoreDataGenerated/ScoreSnap/Game+CoreDataClass.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataClass.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataClass.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataClass.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataClass.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataClass.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/DerivedSources/CoreDataGenerated/ScoreSnap/Game+CoreDataProperties.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataProperties.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataProperties.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataProperties.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataProperties.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Game+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/DerivedSources/CoreDataGenerated/ScoreSnap/Player+CoreDataClass.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataClass.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataClass.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataClass.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataClass.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataClass.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/DerivedSources/CoreDataGenerated/ScoreSnap/Player+CoreDataProperties.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataProperties.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataProperties.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataProperties.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataProperties.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Player+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/DerivedSources/CoreDataGenerated/ScoreSnap/ScoreSnap+CoreDataModel.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap+CoreDataModel.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap+CoreDataModel.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap+CoreDataModel.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap+CoreDataModel.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap+CoreDataModel.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap+CoreDataModel.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap+CoreDataModel.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/ScoreSnap+CoreDataModel~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/DerivedSources/CoreDataGenerated/ScoreSnap/Team+CoreDataClass.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataClass.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataClass.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataClass.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataClass.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataClass.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/DerivedSources/CoreDataGenerated/ScoreSnap/Team+CoreDataProperties.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataProperties.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataProperties.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataProperties.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataProperties.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/Team+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/clau/Library/Mobile Documents/com~apple~CloudDocs/App Development/Bball Game Scores App/ScoreSnap/build/ScoreSnap.build/Debug-iphonesimulator/ScoreSnap.build/Objects-normal/x86_64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

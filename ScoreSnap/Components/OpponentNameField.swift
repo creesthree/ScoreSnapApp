@@ -21,11 +21,12 @@ struct OpponentNameField: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-            Text("Opponent Team")
+            Text("Opponent Name")
                 .font(Theme.Typography.body)
+                .fontWeight(.bold)
                 .foregroundColor(Theme.Colors.primaryText)
             
-            TextField("Enter opponent team name", text: $opponentName)
+            TextField("Optional", text: $opponentName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onChange(of: opponentName) { _, newValue in
                     validateInput(newValue)
