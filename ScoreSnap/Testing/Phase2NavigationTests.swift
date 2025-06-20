@@ -202,7 +202,7 @@ class Phase2NavigationTests: XCTestCase {
         player.name = name
         player.displayOrder = displayOrder
         player.sport = Constants.Basketball.defaultSport
-        player.playerColor = Constants.Defaults.defaultPlayerColor.toHex()
+        player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
         return player
     }
     
@@ -212,7 +212,7 @@ class Phase2NavigationTests: XCTestCase {
         team.name = name
         team.displayOrder = displayOrder
         team.sport = Constants.Basketball.defaultSport
-        team.teamColor = Constants.Defaults.defaultTeamColor.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.player = player
         return team
     }

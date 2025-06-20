@@ -58,7 +58,7 @@ struct TeamRecordView: View {
             if games.isEmpty {
                 EmptyRecordView()
             } else {
-                RecordStatsView(record: record, totalGames: games.count)
+                RecordStatsView(record: record, totalGames: games.count, team: team)
             }
         }
         .padding(Theme.Spacing.md)
@@ -89,6 +89,7 @@ struct EmptyRecordView: View {
 struct RecordStatsView: View {
     let record: (wins: Int, losses: Int, ties: Int)
     let totalGames: Int
+    let team: Team
     
     var body: some View {
         VStack(spacing: Theme.Spacing.md) {
@@ -97,7 +98,7 @@ struct RecordStatsView: View {
                 RecordStatItem(
                     label: "W",
                     value: record.wins,
-                    color: Theme.Colors.win
+                    color: Theme.TeamColors.color(from: team.teamColor)
                 )
                 
                 Text("-")
@@ -107,7 +108,7 @@ struct RecordStatsView: View {
                 RecordStatItem(
                     label: "L",
                     value: record.losses,
-                    color: Theme.Colors.loss
+                    color: Theme.TeamColors.color(from: team.teamColor)
                 )
                 
                 if record.ties > 0 {
@@ -118,7 +119,7 @@ struct RecordStatsView: View {
                     RecordStatItem(
                         label: "T",
                         value: record.ties,
-                        color: Theme.Colors.tie
+                        color: Theme.TeamColors.color(from: team.teamColor)
                     )
                 }
             }
@@ -129,7 +130,7 @@ struct RecordStatsView: View {
                 .foregroundColor(Theme.Colors.secondaryText)
             
             // Visual Progress Bar
-            RecordProgressBar(record: record, totalGames: totalGames)
+            RecordProgressBar(record: record, totalGames: totalGames, team: team)
         }
     }
 }
@@ -156,6 +157,7 @@ struct RecordStatItem: View {
 struct RecordProgressBar: View {
     let record: (wins: Int, losses: Int, ties: Int)
     let totalGames: Int
+    let team: Team
     
     private var winPercentage: Double {
         guard totalGames > 0 else { return 0.0 }
@@ -177,19 +179,19 @@ struct RecordProgressBar: View {
             HStack(spacing: 0) {
                 // Wins
                 Rectangle()
-                    .fill(Theme.Colors.win)
+                    .fill(Theme.TeamColors.color(from: team.teamColor))
                     .frame(width: geometry.size.width * winPercentage)
                 
                 // Ties
                 if record.ties > 0 {
                     Rectangle()
-                        .fill(Theme.Colors.tie)
+                        .fill(Theme.TeamColors.color(from: team.teamColor))
                         .frame(width: geometry.size.width * tiePercentage)
                 }
                 
                 // Losses
                 Rectangle()
-                    .fill(Theme.Colors.loss)
+                    .fill(Theme.TeamColors.color(from: team.teamColor))
                     .frame(width: geometry.size.width * lossPercentage)
             }
         }

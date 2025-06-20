@@ -114,45 +114,29 @@ struct Theme {
         /// Get a color from the team's stored color string
         static func color(from colorString: String?) -> Color {
             guard let colorString = colorString, !colorString.isEmpty else {
-                return Constants.Defaults.defaultTeamColor
+                return Constants.Defaults.defaultTeamColor.color
             }
             
-            // If it's a hex color, convert it
-            if colorString.hasPrefix("#") {
-                return Color(hex: colorString)
+            // Try to match predefined TeamColor enum
+            if let teamColor = TeamColor(rawValue: colorString.lowercased()) {
+                return teamColor.color
             }
             
-            // Otherwise, try to match predefined colors
-            return predefinedColor(named: colorString) ?? Constants.Defaults.defaultTeamColor
-        }
-        
-        /// Get predefined color by name
-        private static func predefinedColor(named name: String) -> Color? {
-            switch name.lowercased() {
-            case "red": return .red
-            case "blue": return .blue
-            case "green": return .green
-            case "orange": return .orange
-            case "purple": return .purple
-            case "pink": return .pink
-            case "teal": return .teal
-            case "indigo": return .indigo
-            case "yellow": return .yellow
-            case "gray", "grey": return .gray
-            case "black": return .black
-            case "white": return .white
-            case "brown": return .brown
-            default: return nil
-            }
+            // Fallback to default color
+            return Constants.Defaults.defaultTeamColor.color
         }
         
         /// Get available team colors for picker
-        static let availableColors: [Color] = Constants.Defaults.teamColors
+        static let availableColors: [TeamColor] = TeamColor.allCases
         
         /// Get color name for storage
-        static func colorName(for color: Color) -> String {
-            // Convert to hex for storage
-            return color.toHex()
+        static func colorName(for teamColor: TeamColor) -> String {
+            return teamColor.rawValue
+        }
+        
+        /// Get color from TeamColor enum
+        static func color(from teamColor: TeamColor) -> Color {
+            return teamColor.color
         }
     }
     

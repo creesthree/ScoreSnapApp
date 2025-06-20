@@ -157,11 +157,47 @@ class AppContext: ObservableObject {
     // MARK: - Setup Workflow Support
     
     var needsSetup: Bool {
-        currentPlayer == nil
+        // Check if user has completed setup
+        let hasCompletedSetup = UserDefaults.standard.bool(forKey: "hasCompletedSetup")
+        
+        // If setup is not complete, we need setup
+        if !hasCompletedSetup {
+            return true
+        }
+        
+        // If setup is complete but no current player, we need setup
+        if currentPlayer == nil {
+            return true
+        }
+        
+        return false
     }
     
     func completeSetup(with player: Player, and team: Team) {
         currentPlayer = player
         currentTeam = team
+        
+        // Mark setup as complete
+        UserDefaults.standard.set(true, forKey: "hasCompletedSetup")
+        UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
+    }
+    
+    func resetSetup() {
+        // Clear setup completion flags
+        UserDefaults.standard.removeObject(forKey: "hasCompletedSetup")
+        UserDefaults.standard.removeObject(forKey: "hasSeenOnboarding")
+        UserDefaults.standard.removeObject(forKey: "setupSkipped")
+        
+        // Reset current context
+        currentPlayer = nil
+        currentTeam = nil
+    }
+    
+    var isFirstTimeUser: Bool {
+        return !UserDefaults.standard.bool(forKey: "hasSeenOnboarding")
+    }
+    
+    var hasSkippedSetup: Bool {
+        return UserDefaults.standard.bool(forKey: "setupSkipped")
     }
 } 

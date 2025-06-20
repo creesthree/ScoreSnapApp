@@ -61,7 +61,7 @@ class PlayersViewModel: ObservableObject {
     
     // MARK: - Player CRUD Operations
     
-    func createPlayer(name: String, color: Color, sport: String = "Basketball") {
+    func createPlayer(name: String, color: TeamColor, sport: String = "Basketball") {
         // Validate name before creating
         guard validatePlayerName(name) else { return }
         guard isPlayerNameUnique(name) else { return }
@@ -69,20 +69,20 @@ class PlayersViewModel: ObservableObject {
         let player = Player(context: viewContext)
         player.id = UUID()
         player.name = name.trimmed
-        player.playerColor = color.toHex()
+        player.playerColor = color.rawValue
         player.sport = sport
         player.displayOrder = Int32(players.count)
         
         saveContext()
     }
     
-    func updatePlayer(_ player: Player, name: String, color: Color, sport: String) {
+    func updatePlayer(_ player: Player, name: String, color: TeamColor, sport: String) {
         // Validate name before updating
         guard validatePlayerName(name) else { return }
         guard isPlayerNameUnique(name, excluding: player) else { return }
         
         player.name = name.trimmed
-        player.playerColor = color.toHex()
+        player.playerColor = color.rawValue
         player.sport = sport
         
         saveContext()
@@ -96,7 +96,7 @@ class PlayersViewModel: ObservableObject {
     
     // MARK: - Team CRUD Operations
     
-    func createTeam(name: String, color: Color, player: Player, sport: String = "Basketball") {
+    func createTeam(name: String, color: TeamColor, player: Player, sport: String = "Basketball") {
         // Validate name before creating
         guard validateTeamName(name) else { return }
         guard isTeamNameUnique(name, for: player) else { return }
@@ -104,7 +104,7 @@ class PlayersViewModel: ObservableObject {
         let team = Team(context: viewContext)
         team.id = UUID()
         team.name = name.trimmed
-        team.teamColor = color.toHex()
+        team.teamColor = color.rawValue
         team.sport = sport
         team.player = player
         team.displayOrder = Int32(teams.filter { $0.player == player }.count)
@@ -112,14 +112,14 @@ class PlayersViewModel: ObservableObject {
         saveContext()
     }
     
-    func updateTeam(_ team: Team, name: String, color: Color, sport: String) {
+    func updateTeam(_ team: Team, name: String, color: TeamColor, sport: String) {
         // Validate name before updating
         guard validateTeamName(name) else { return }
         guard let player = team.player else { return }
         guard isTeamNameUnique(name, for: player, excluding: team) else { return }
         
         team.name = name.trimmed
-        team.teamColor = color.toHex()
+        team.teamColor = color.rawValue
         team.sport = sport
         
         saveContext()

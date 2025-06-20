@@ -7,6 +7,46 @@
 
 import SwiftUI
 
+// MARK: - Team Color Enum
+
+enum TeamColor: String, CaseIterable {
+    case red = "red"
+    case blue = "blue"
+    case green = "green"
+    case orange = "orange"
+    case purple = "purple"
+    case pink = "pink"
+    case teal = "teal"
+    case indigo = "indigo"
+    case yellow = "yellow"
+    case gray = "gray"
+    case brown = "brown"
+    case black = "black"
+    
+    var color: Color {
+        switch self {
+        case .red: return .red
+        case .blue: return .blue
+        case .green: return .green
+        case .orange: return .orange
+        case .purple: return .purple
+        case .pink: return .pink
+        case .teal: return .teal
+        case .indigo: return .indigo
+        case .yellow: return .yellow
+        case .gray: return .gray
+        case .brown: return .brown
+        case .black: return .black
+        }
+    }
+    
+    var displayName: String {
+        return rawValue.capitalized
+    }
+}
+
+// MARK: - App Constants
+
 struct Constants {
     
     // MARK: - Basketball Constants
@@ -101,15 +141,8 @@ struct Constants {
     
     // MARK: - Default Values
     struct Defaults {
-        static let playerColors: [Color] = [
-            .black, .red, .pink, .orange, .yellow, .green,
-            .teal, .blue, .indigo, .purple, .brown, .gray
-        ]
-        static let teamColors: [Color] = [
-            .black, .red, .pink, .orange, .yellow, .green,
-            .teal, .blue, .indigo, .purple, .brown, .gray
-        ]
-        static let defaultPlayerColor: Color = .blue
-        static let defaultTeamColor: Color = .red
+        static let teamColors: [TeamColor] = TeamColor.allCases
+        static let defaultTeamColor: TeamColor = .blue
+        static let defaultPlayerColor: TeamColor = .red
     }
 } 

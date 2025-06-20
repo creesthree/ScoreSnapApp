@@ -10,17 +10,17 @@ import SwiftUI
 struct TeamEditSheet: View {
     let team: Team?
     let player: Player
-    let onSave: (String, Color, String) -> Void
+    let onSave: (String, TeamColor, String) -> Void
     
     @Environment(\.dismiss) private var dismiss
     @State private var name: String = ""
-    @State private var selectedColor: Color = Constants.Defaults.defaultTeamColor
+    @State private var selectedColor: TeamColor = Constants.Defaults.defaultTeamColor
     @State private var showingValidationAlert = false
     @State private var validationMessage = ""
     
     @StateObject private var viewModel: PlayersViewModel
     
-    init(team: Team?, player: Player, onSave: @escaping (String, Color, String) -> Void) {
+    init(team: Team?, player: Player, onSave: @escaping (String, TeamColor, String) -> Void) {
         self.team = team
         self.player = player
         self.onSave = onSave
@@ -29,7 +29,10 @@ struct TeamEditSheet: View {
         // Initialize state with team data if editing
         if let team = team {
             self._name = State(initialValue: team.name ?? "")
-            self._selectedColor = State(initialValue: Theme.TeamColors.color(from: team.teamColor))
+            // For existing teams, use the stored TeamColor or default
+            if let colorString = team.teamColor, let teamColor = TeamColor(rawValue: colorString) {
+                self._selectedColor = State(initialValue: teamColor)
+            }
         }
     }
     
@@ -57,41 +60,26 @@ struct TeamEditSheet: View {
                             .font(Theme.Typography.body)
                             .foregroundColor(Theme.Colors.primaryText)
                         
-                        ColorPicker("Select Color", selection: $selectedColor, supportsOpacity: false)
-                            .labelsHidden()
-                        
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: Theme.Spacing.md) {
+                            ForEach(TeamColor.allCases, id: \.self) { color in
+                                TeamColorButton(
+                                    color: color,
+                                    isSelected: selectedColor == color,
+                                    action: { selectedColor = color }
+                                )
+                            }
+                        }
                         // Color preview
                         HStack {
                             Circle()
-                                .fill(selectedColor)
+                                .fill(selectedColor.color)
                                 .frame(width: 30, height: 30)
-                            
                             Text("Preview")
                                 .font(Theme.Typography.caption)
                                 .foregroundColor(Theme.Colors.secondaryText)
-                            
                             Spacer()
                         }
                     }
-                }
-                
-                Section("Available Colors") {
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 6), spacing: Theme.Spacing.sm) {
-                        ForEach(Constants.Defaults.teamColors, id: \.self) { color in
-                            Button(action: {
-                                selectedColor = color
-                            }) {
-                                Circle()
-                                    .fill(color)
-                                    .frame(width: 40, height: 40)
-                                    .overlay(
-                                        Circle()
-                                            .stroke(selectedColor == color ? Theme.Colors.primary : Color.clear, lineWidth: 3)
-                                    )
-                            }
-                        }
-                    }
-                    .padding(.vertical, Theme.Spacing.xs)
                 }
             }
             .navigationTitle(team == nil ? "Add Team" : "Edit Team")
@@ -144,7 +132,7 @@ struct TeamEditSheet: View {
 #Preview {
     let player = Player()
     player.name = "Sample Player"
-    player.playerColor = "#FF0000"
+    player.playerColor = TeamColor.red.rawValue
     
     return TeamEditSheet(team: nil, player: player) { name, color, sport in
         print("Creating team: \(name)")

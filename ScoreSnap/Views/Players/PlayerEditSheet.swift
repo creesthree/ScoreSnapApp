@@ -9,17 +9,17 @@ import SwiftUI
 
 struct PlayerEditSheet: View {
     let player: Player?
-    let onSave: (String, Color, String) -> Void
+    let onSave: (String, TeamColor, String) -> Void
     
     @Environment(\.dismiss) private var dismiss
     @State private var name: String = ""
-    @State private var selectedColor: Color = Constants.Defaults.defaultPlayerColor
+    @State private var selectedColor: TeamColor = Constants.Defaults.defaultPlayerColor
     @State private var showingValidationAlert = false
     @State private var validationMessage = ""
     
     @StateObject private var viewModel: PlayersViewModel
     
-    init(player: Player?, onSave: @escaping (String, Color, String) -> Void) {
+    init(player: Player?, onSave: @escaping (String, TeamColor, String) -> Void) {
         self.player = player
         self.onSave = onSave
         self._viewModel = StateObject(wrappedValue: PlayersViewModel(viewContext: PersistenceController.shared.container.viewContext))
@@ -27,7 +27,10 @@ struct PlayerEditSheet: View {
         // Initialize state with player data if editing
         if let player = player {
             self._name = State(initialValue: player.name ?? "")
-            self._selectedColor = State(initialValue: Theme.TeamColors.color(from: player.playerColor))
+            // For existing players, use the stored TeamColor or default
+            if let colorString = player.playerColor, let teamColor = TeamColor(rawValue: colorString) {
+                self._selectedColor = State(initialValue: teamColor)
+            }
         }
     }
     
@@ -40,22 +43,31 @@ struct PlayerEditSheet: View {
                 }
                 
                 Section("Available Colors") {
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 6), spacing: Theme.Spacing.sm) {
-                        ForEach(Constants.Defaults.playerColors, id: \.self) { color in
-                            Button(action: {
-                                selectedColor = color
-                            }) {
-                                Circle()
-                                    .fill(color)
-                                    .frame(width: 40, height: 40)
-                                    .overlay(
-                                        Circle()
-                                            .stroke(selectedColor == color ? Theme.Colors.primary : Color.clear, lineWidth: 3)
-                                    )
+                    VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
+                        Text("Player Color")
+                            .font(Theme.Typography.body)
+                            .foregroundColor(Theme.Colors.primaryText)
+                        
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: Theme.Spacing.md) {
+                            ForEach(TeamColor.allCases, id: \.self) { color in
+                                TeamColorButton(
+                                    color: color,
+                                    isSelected: selectedColor == color,
+                                    action: { selectedColor = color }
+                                )
                             }
                         }
+                        // Color preview
+                        HStack {
+                            Circle()
+                                .fill(selectedColor.color)
+                                .frame(width: 30, height: 30)
+                            Text("Preview")
+                                .font(Theme.Typography.caption)
+                                .foregroundColor(Theme.Colors.secondaryText)
+                            Spacer()
+                        }
                     }
-                    .padding(.vertical, Theme.Spacing.xs)
                 }
             }
             .navigationTitle(player == nil ? "Add Player" : "Edit Player")

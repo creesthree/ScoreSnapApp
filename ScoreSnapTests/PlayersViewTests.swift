@@ -182,13 +182,13 @@ class PlayersViewTests: XCTestCase {
     func testAddPlayerSheet() {
         // Test player creation with form validation
         let playerName = "Test Player"
-        let playerColor = Color.blue
+        let playerColor = TeamColor.red
         let sport = "Basketball"
         
         let player = Player(context: testContext)
         player.id = UUID()
         player.name = playerName
-        player.playerColor = playerColor.toHex()
+        player.playerColor = playerColor.rawValue
         player.sport = sport
         player.displayOrder = 0
         
@@ -196,7 +196,7 @@ class PlayersViewTests: XCTestCase {
         
         // Verify form fields were populated correctly
         XCTAssertEqual(player.name, playerName)
-        XCTAssertEqual(player.playerColor, playerColor.toHex())
+        XCTAssertEqual(player.playerColor, playerColor.rawValue)
         XCTAssertEqual(player.sport, sport)
         XCTAssertNotNil(player.id)
     }
@@ -204,13 +204,13 @@ class PlayersViewTests: XCTestCase {
     func testAddTeamSheet() {
         let player = createTestPlayer(name: "Test Player", displayOrder: 0)
         let teamName = "Test Team"
-        let teamColor = Color.red
+        let teamColor = TeamColor.blue
         let sport = "Basketball"
         
         let team = Team(context: testContext)
         team.id = UUID()
         team.name = teamName
-        team.teamColor = teamColor.toHex()
+        team.teamColor = teamColor.rawValue
         team.sport = sport
         team.player = player
         team.displayOrder = 0
@@ -219,7 +219,7 @@ class PlayersViewTests: XCTestCase {
         
         // Verify team was created with correct player association
         XCTAssertEqual(team.name, teamName)
-        XCTAssertEqual(team.teamColor, teamColor.toHex())
+        XCTAssertEqual(team.teamColor, teamColor.rawValue)
         XCTAssertEqual(team.sport, sport)
         XCTAssertEqual(team.player, player)
         XCTAssertNotNil(team.id)
@@ -251,17 +251,12 @@ class PlayersViewTests: XCTestCase {
     
     func testCreationCancellation() {
         // Test that cancellation doesn't save invalid data
-        let player = Player(context: testContext)
-        player.name = "Test Player"
-        player.sport = "Basketball"
-        
-        // Simulate cancellation by not saving
-        // testContext.save() is not called
+        // Don't create the player in the context at all to simulate cancellation
         
         let playersRequest: NSFetchRequest<Player> = Player.fetchRequest()
         let players = try! testContext.fetch(playersRequest)
         
-        // Should be empty since we didn't save
+        // Should be empty since we didn't create or save anything
         XCTAssertEqual(players.count, 0)
     }
     
@@ -428,7 +423,7 @@ class PlayersViewTests: XCTestCase {
         player.name = name
         player.displayOrder = displayOrder
         player.sport = "Basketball"
-        player.playerColor = Constants.Defaults.defaultPlayerColor.toHex()
+        player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
         return player
     }
     
@@ -438,7 +433,7 @@ class PlayersViewTests: XCTestCase {
         team.name = name
         team.displayOrder = displayOrder
         team.sport = "Basketball"
-        team.teamColor = Constants.Defaults.defaultTeamColor.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.player = player
         return team
     }

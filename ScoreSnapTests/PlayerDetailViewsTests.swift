@@ -46,13 +46,13 @@ class PlayerDetailViewsTests: XCTestCase {
     func testFormFieldPopulation() {
         // Test that existing player data populates form correctly
         let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        player.playerColor = Color.blue.toHex()
+        player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
         player.sport = "Basketball"
         try! testContext.save()
         
         // Verify form fields would be populated correctly
         XCTAssertEqual(player.name, "Test Player")
-        XCTAssertEqual(player.playerColor, Color.blue.toHex())
+        XCTAssertEqual(player.playerColor, Constants.Defaults.defaultPlayerColor.rawValue)
         XCTAssertEqual(player.sport, "Basketball")
         XCTAssertNotNil(player.id)
     }
@@ -79,10 +79,10 @@ class PlayerDetailViewsTests: XCTestCase {
         try! testContext.save()
         
         // Test color selection
-        let selectedColor = Color.red
+        let selectedColor = TeamColor.red
         viewModel.updatePlayer(player, name: "Test Player", color: selectedColor, sport: "Basketball")
         
-        XCTAssertEqual(player.playerColor, selectedColor.toHex())
+        XCTAssertEqual(player.playerColor, selectedColor.rawValue)
         
         // Test color retrieval
         let retrievedColor = viewModel.getPlayerColor(player)
@@ -112,13 +112,13 @@ class PlayerDetailViewsTests: XCTestCase {
         
         // Test save with changes
         let newName = "Updated Player"
-        let newColor = Color.green
+        let newColor = TeamColor.green
         
         viewModel.updatePlayer(player, name: newName, color: newColor, sport: "Basketball")
         
         // Verify changes were saved
         XCTAssertEqual(player.name, newName)
-        XCTAssertEqual(player.playerColor, newColor.toHex())
+        XCTAssertEqual(player.playerColor, newColor.rawValue)
         
         // Verify persistence
         let playersRequest: NSFetchRequest<Player> = Player.fetchRequest()
@@ -151,13 +151,13 @@ class PlayerDetailViewsTests: XCTestCase {
     func testTeamFormFieldPopulation() {
         let player = createTestPlayer(name: "Test Player", displayOrder: 0)
         let team = createTestTeam(name: "Test Team", player: player, displayOrder: 0)
-        team.teamColor = Color.red.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.sport = "Basketball"
         try! testContext.save()
         
         // Verify form fields would be populated correctly
         XCTAssertEqual(team.name, "Test Team")
-        XCTAssertEqual(team.teamColor, Color.red.toHex())
+        XCTAssertEqual(team.teamColor, Constants.Defaults.defaultTeamColor.rawValue)
         XCTAssertEqual(team.sport, "Basketball")
         XCTAssertEqual(team.player, player)
         XCTAssertNotNil(team.id)
@@ -187,10 +187,10 @@ class PlayerDetailViewsTests: XCTestCase {
         try! testContext.save()
         
         // Test color selection
-        let selectedColor = Color.blue
+        let selectedColor = TeamColor.blue
         viewModel.updateTeam(team, name: "Test Team", color: selectedColor, sport: "Basketball")
         
-        XCTAssertEqual(team.teamColor, selectedColor.toHex())
+        XCTAssertEqual(team.teamColor, selectedColor.rawValue)
         
         // Test color retrieval
         let retrievedColor = viewModel.getTeamColor(team)
@@ -232,9 +232,9 @@ class PlayerDetailViewsTests: XCTestCase {
         XCTAssertTrue(viewModel.validateTeamName(maxLengthName))
         
         // Test color format validation
-        let validColor = Color.red
-        XCTAssertNotNil(validColor.toHex())
-        XCTAssertTrue(validColor.toHex().hasPrefix("#"))
+        let validColor = TeamColor.red
+        XCTAssertNotNil(validColor.rawValue)
+        XCTAssertTrue(validColor.rawValue.hasPrefix("#"))
     }
     
     func testTeamSaveCancelFunctionality() {
@@ -244,13 +244,13 @@ class PlayerDetailViewsTests: XCTestCase {
         
         // Test save with changes
         let newName = "Updated Team"
-        let newColor = Color.green
+        let newColor = TeamColor.orange
         
         viewModel.updateTeam(team, name: newName, color: newColor, sport: "Basketball")
         
         // Verify changes were saved
         XCTAssertEqual(team.name, newName)
-        XCTAssertEqual(team.teamColor, newColor.toHex())
+        XCTAssertEqual(team.teamColor, newColor.rawValue)
         
         // Test cancellation simulation
         let tempName = "Temporary Team"
@@ -398,15 +398,15 @@ class PlayerDetailViewsTests: XCTestCase {
     
     func testColorFormatConversion() {
         // Test color to hex conversion
-        let colors: [Color] = [.red, .blue, .green, .yellow, .purple, .orange]
+        let colors: [TeamColor] = [.red, .blue, .green, .yellow, .purple, .orange]
         
         for color in colors {
-            let hex = color.toHex()
+            let hex = color.rawValue
             XCTAssertTrue(hex.hasPrefix("#"))
             XCTAssertEqual(hex.count, 7) // #RRGGBB format
             
             // Test hex to color conversion
-            let convertedColor = Color(hex: hex)
+            let convertedColor = TeamColor(rawValue: hex)
             XCTAssertNotNil(convertedColor)
         }
     }
@@ -435,7 +435,7 @@ class PlayerDetailViewsTests: XCTestCase {
         player.name = name
         player.displayOrder = displayOrder
         player.sport = "Basketball"
-        player.playerColor = Constants.Defaults.defaultPlayerColor.toHex()
+        player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
         return player
     }
     
@@ -445,7 +445,7 @@ class PlayerDetailViewsTests: XCTestCase {
         team.name = name
         team.displayOrder = displayOrder
         team.sport = "Basketball"
-        team.teamColor = Constants.Defaults.defaultTeamColor.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.player = player
         return team
     }

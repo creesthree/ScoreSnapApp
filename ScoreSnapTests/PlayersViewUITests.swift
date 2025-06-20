@@ -212,12 +212,12 @@ class PlayersViewUITests: XCTestCase {
     func testTeamDisplay() {
         let player = createTestPlayer(name: "Test Player", displayOrder: 0)
         let team = createTestTeam(name: "Test Team", player: player, displayOrder: 0)
-        team.teamColor = Color.red.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         try! testContext.save()
         
         // Verify team properties are displayed correctly
         XCTAssertEqual(team.name, "Test Team")
-        XCTAssertEqual(team.teamColor, Color.red.toHex())
+        XCTAssertEqual(team.teamColor, Constants.Defaults.defaultTeamColor.rawValue)
         XCTAssertEqual(team.player, player)
         XCTAssertEqual(team.sport, "Basketball")
     }
@@ -475,7 +475,7 @@ class PlayersViewUITests: XCTestCase {
         let team = Team(context: testContext)
         team.id = UUID()
         team.name = teamName
-        team.teamColor = teamColor.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.sport = sport
         team.player = player
         team.displayOrder = 0
@@ -484,7 +484,7 @@ class PlayersViewUITests: XCTestCase {
         
         // Verify form fields were populated correctly
         XCTAssertEqual(team.name, teamName)
-        XCTAssertEqual(team.teamColor, teamColor.toHex())
+        XCTAssertEqual(team.teamColor, Constants.Defaults.defaultTeamColor.rawValue)
         XCTAssertEqual(team.sport, sport)
         XCTAssertEqual(team.player, player)
         XCTAssertNotNil(team.id)
@@ -626,7 +626,7 @@ class PlayersViewUITests: XCTestCase {
         player.name = name
         player.displayOrder = displayOrder
         player.sport = "Basketball"
-        player.playerColor = Constants.Defaults.defaultPlayerColor.toHex()
+        player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
         return player
     }
     
@@ -636,7 +636,7 @@ class PlayersViewUITests: XCTestCase {
         team.name = name
         team.displayOrder = displayOrder
         team.sport = "Basketball"
-        team.teamColor = Constants.Defaults.defaultTeamColor.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.player = player
         return team
     }

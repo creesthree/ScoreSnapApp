@@ -2,7 +2,7 @@
 //  ColorManagementTests.swift
 //  ScoreSnapTests
 //
-//  Created by CHRISTOPHER LAU on 6/18/25.
+//  Created by CHRISTOPHER LAU on 6/19/25.
 //
 
 import XCTest
@@ -16,9 +16,7 @@ class ColorManagementTests: XCTestCase {
     var testContext: NSManagedObjectContext!
     var viewModel: PlayersViewModel!
     
-    override func setUp() {
-        super.setUp()
-        
+    override func setUpWithError() throws {
         // Create in-memory Core Data stack for testing
         let container = NSPersistentContainer(name: "ScoreSnap")
         let description = NSPersistentStoreDescription()
@@ -35,151 +33,201 @@ class ColorManagementTests: XCTestCase {
         viewModel = PlayersViewModel(viewContext: testContext)
     }
     
-    override func tearDown() {
+    override func tearDownWithError() throws {
         testContext = nil
         viewModel = nil
-        super.tearDown()
     }
     
-    // MARK: - Color Picker Integration Tests
+    // MARK: - TeamColor Tests
     
-    func testSwiftUIColorPickerDisplay() {
-        // Test that ColorPicker can be created with various colors
-        let colors: [Color] = [.red, .blue, .green, .yellow, .purple, .orange, .pink, .teal]
+    func testTeamColorEnumValues() {
+        // Test that all 12 colors are available
+        XCTAssertEqual(TeamColor.allCases.count, 12)
         
-        for color in colors {
-            // Test color creation
-            XCTAssertNotNil(color)
-            
-            // Test color to hex conversion
-            let hex = color.toHex()
-            XCTAssertTrue(hex.hasPrefix("#"))
-            XCTAssertEqual(hex.count, 7) // #RRGGBB format
-        }
+        // Test specific colors
+        XCTAssertEqual(TeamColor.red.rawValue, "red")
+        XCTAssertEqual(TeamColor.blue.rawValue, "blue")
+        XCTAssertEqual(TeamColor.green.rawValue, "green")
+        XCTAssertEqual(TeamColor.orange.rawValue, "orange")
+        XCTAssertEqual(TeamColor.purple.rawValue, "purple")
+        XCTAssertEqual(TeamColor.pink.rawValue, "pink")
+        XCTAssertEqual(TeamColor.teal.rawValue, "teal")
+        XCTAssertEqual(TeamColor.indigo.rawValue, "indigo")
+        XCTAssertEqual(TeamColor.yellow.rawValue, "yellow")
+        XCTAssertEqual(TeamColor.gray.rawValue, "gray")
+        XCTAssertEqual(TeamColor.brown.rawValue, "brown")
+        XCTAssertEqual(TeamColor.black.rawValue, "black")
     }
     
-    func testColorSelection() {
-        let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        try! testContext.save()
+    func testTeamColorDisplayNames() {
+        XCTAssertEqual(TeamColor.red.displayName, "Red")
+        XCTAssertEqual(TeamColor.blue.displayName, "Blue")
+        XCTAssertEqual(TeamColor.green.displayName, "Green")
+    }
+    
+    func testTeamColorColorValues() {
+        // Test that colors are properly mapped
+        XCTAssertEqual(TeamColor.red.color, Color.red)
+        XCTAssertEqual(TeamColor.blue.color, Color.blue)
+        XCTAssertEqual(TeamColor.green.color, Color.green)
+    }
+    
+    // MARK: - Player Color Management Tests
+    
+    func testPlayerColorStorage() {
+        let player = Player(context: testContext)
+        player.name = "Test Player"
+        player.playerColor = TeamColor.red.rawValue
         
-        // Test color selection and update
-        let selectedColor = Color.blue
-        viewModel.updatePlayer(player, name: "Test Player", color: selectedColor, sport: "Basketball")
-        
-        // Verify color was updated
-        XCTAssertEqual(player.playerColor, selectedColor.toHex())
-        
-        // Test color retrieval
         let retrievedColor = viewModel.getPlayerColor(player)
-        XCTAssertNotNil(retrievedColor)
+        XCTAssertEqual(retrievedColor, TeamColor.red.color)
     }
     
-    func testColorFormatConversion() {
-        // Test color to hex conversion
-        let testColors: [(Color, String)] = [
-            (.red, "#FF0000"),
-            (.green, "#00FF00"),
-            (.blue, "#0000FF"),
-            (.white, "#FFFFFF"),
-            (.black, "#000000")
-        ]
+    func testPlayerColorWithInvalidValue() {
+        let player = Player(context: testContext)
+        player.name = "Test Player"
+        player.playerColor = "invalid_color"
         
-        for (color, expectedHex) in testColors {
-            let hex = color.toHex()
-            XCTAssertEqual(hex, expectedHex)
-            
-            // Test hex to color conversion
-            let convertedColor = Color(hex: hex)
-            XCTAssertNotNil(convertedColor)
-        }
+        // Should return default color for invalid values
+        let retrievedColor = viewModel.getPlayerColor(player)
+        XCTAssertEqual(retrievedColor, Constants.Defaults.defaultTeamColor.color)
     }
     
-    func testColorDisplay() {
-        let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        let team = createTestTeam(name: "Test Team", player: player, displayOrder: 0)
-        try! testContext.save()
+    func testPlayerColorWithNilValue() {
+        let player = Player(context: testContext)
+        player.name = "Test Player"
+        player.playerColor = nil
         
-        // Test color assignment
-        let playerColor = Color.red
-        let teamColor = Color.blue
-        
-        player.playerColor = playerColor.toHex()
-        team.teamColor = teamColor.toHex()
-        
-        // Test color retrieval and display
-        let retrievedPlayerColor = viewModel.getPlayerColor(player)
-        let retrievedTeamColor = viewModel.getTeamColor(team)
-        
-        XCTAssertNotNil(retrievedPlayerColor)
-        XCTAssertNotNil(retrievedTeamColor)
-        
-        // Test color persistence
-        XCTAssertEqual(player.playerColor, playerColor.toHex())
-        XCTAssertEqual(team.teamColor, teamColor.toHex())
+        // Should return default color for nil values
+        let retrievedColor = viewModel.getPlayerColor(player)
+        XCTAssertEqual(retrievedColor, Constants.Defaults.defaultTeamColor.color)
     }
     
-    func testDefaultColorBehavior() {
-        // Test that new entities get appropriate default colors
-        let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        let team = createTestTeam(name: "Test Team", player: player, displayOrder: 0)
+    // MARK: - Team Color Management Tests
+    
+    func testTeamColorStorage() {
+        let player = Player(context: testContext)
+        let team = Team(context: testContext)
+        team.name = "Test Team"
+        team.teamColor = TeamColor.blue.rawValue
+        team.player = player
         
-        // Verify default colors are assigned
-        XCTAssertNotNil(player.playerColor)
-        XCTAssertNotNil(team.teamColor)
+        let retrievedColor = viewModel.getTeamColor(team)
+        XCTAssertEqual(retrievedColor, TeamColor.blue.color)
+    }
+    
+    func testTeamColorWithInvalidValue() {
+        let player = Player(context: testContext)
+        let team = Team(context: testContext)
+        team.name = "Test Team"
+        team.teamColor = "invalid_color"
+        team.player = player
         
-        // Test default color retrieval
-        let playerColor = viewModel.getPlayerColor(player)
-        let teamColor = viewModel.getTeamColor(team)
+        // Should return default color for invalid values
+        let retrievedColor = viewModel.getTeamColor(team)
+        XCTAssertEqual(retrievedColor, Constants.Defaults.defaultTeamColor.color)
+    }
+    
+    func testTeamColorWithNilValue() {
+        let player = Player(context: testContext)
+        let team = Team(context: testContext)
+        team.name = "Test Team"
+        team.teamColor = nil
+        team.player = player
         
-        XCTAssertNotNil(playerColor)
-        XCTAssertNotNil(teamColor)
+        // Should return default color for nil values
+        let retrievedColor = viewModel.getTeamColor(team)
+        XCTAssertEqual(retrievedColor, Constants.Defaults.defaultTeamColor.color)
+    }
+    
+    // MARK: - Theme TeamColors Tests
+    
+    func testThemeTeamColorsColorFromString() {
+        let player = Player(context: testContext)
+        let team = Team(context: testContext)
         
-        // Test that default colors are valid hex strings
-        XCTAssertTrue(player.playerColor!.hasPrefix("#"))
-        XCTAssertTrue(team.teamColor!.hasPrefix("#"))
-        XCTAssertEqual(player.playerColor!.count, 7)
-        XCTAssertEqual(team.teamColor!.count, 7)
+        player.playerColor = TeamColor.red.rawValue
+        team.teamColor = TeamColor.blue.rawValue
+        
+        let playerColor = Theme.TeamColors.color(from: player.playerColor)
+        let teamColor = Theme.TeamColors.color(from: team.teamColor)
+        
+        XCTAssertEqual(playerColor, TeamColor.red.color)
+        XCTAssertEqual(teamColor, TeamColor.blue.color)
+    }
+    
+    func testThemeTeamColorsColorFromNil() {
+        let nilColor = Theme.TeamColors.color(from: nil)
+        XCTAssertEqual(nilColor, Constants.Defaults.defaultTeamColor.color)
+    }
+    
+    func testThemeTeamColorsColorFromInvalidString() {
+        let invalidColor = Theme.TeamColors.color(from: "invalid_color")
+        XCTAssertEqual(invalidColor, Constants.Defaults.defaultTeamColor.color)
+    }
+    
+    func testThemeTeamColorsColorFromEmptyString() {
+        let emptyColor = Theme.TeamColors.color(from: "")
+        XCTAssertEqual(emptyColor, Constants.Defaults.defaultTeamColor.color)
+    }
+    
+    // MARK: - Color Persistence Tests
+    
+    func testColorPersistenceAcrossViewModelInstances() {
+        let player = Player(context: testContext)
+        player.name = "Test Player"
+        player.playerColor = TeamColor.green.rawValue
+        
+        let team = Team(context: testContext)
+        team.name = "Test Team"
+        team.teamColor = TeamColor.purple.rawValue
+        team.player = player
+        
+        try? testContext.save()
+        
+        let newViewModel = PlayersViewModel(viewContext: testContext)
+        let loadedPlayer = try? testContext.fetch(Player.fetchRequest()).first
+        let loadedTeam = try? testContext.fetch(Team.fetchRequest()).first
+        
+        XCTAssertNotNil(loadedPlayer)
+        XCTAssertNotNil(loadedTeam)
+        
+        let retrievedPlayerColor = newViewModel.getPlayerColor(loadedPlayer!)
+        let retrievedTeamColor = newViewModel.getTeamColor(loadedTeam!)
+        
+        XCTAssertEqual(retrievedPlayerColor, TeamColor.green.color)
+        XCTAssertEqual(retrievedTeamColor, TeamColor.purple.color)
     }
     
     // MARK: - Color Validation Tests
     
-    func testHexFormatValidation() {
-        // Test valid hex formats
-        let validHexColors = ["#FF0000", "#00FF00", "#0000FF", "#FFFFFF", "#000000", "#123456"]
-        
-        for hex in validHexColors {
-            let color = Color(hex: hex)
-            XCTAssertNotNil(color)
-        }
-        
-        // Test invalid hex formats
-        let invalidHexColors = ["#GG0000", "FF0000", "#FF00", "#FF00000", "invalid", ""]
-        
-        for hex in invalidHexColors {
-            let color = Color(hex: hex)
-            // Should still create a color (fallback behavior)
-            XCTAssertNotNil(color)
+    func testValidTeamColorValues() {
+        for teamColor in TeamColor.allCases {
+            XCTAssertNotNil(TeamColor(rawValue: teamColor.rawValue))
+            XCTAssertEqual(TeamColor(rawValue: teamColor.rawValue), teamColor)
         }
     }
     
-    func testInvalidColorHandling() {
-        // Test malformed color strings
-        let malformedColors = ["", "invalid", "#GG0000", "FF0000", "#FF00"]
+    func testInvalidTeamColorValues() {
+        let invalidColors = ["", "invalid", "RED", "Blue123", "green_"]
         
-        for colorString in malformedColors {
-            let color = Color(hex: colorString)
-            // Should handle gracefully and create a fallback color
-            XCTAssertNotNil(color)
+        for invalidColor in invalidColors {
+            XCTAssertNil(TeamColor(rawValue: invalidColor))
         }
-        
-        // Test nil color handling
-        let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        player.playerColor = nil
-        
-        let retrievedColor = viewModel.getPlayerColor(player)
-        // Should return default color when nil
-        XCTAssertNotNil(retrievedColor)
     }
+    
+    // MARK: - Default Color Tests
+    
+    func testDefaultColors() {
+        XCTAssertEqual(Constants.Defaults.defaultTeamColor, TeamColor.blue)
+        XCTAssertEqual(Constants.Defaults.defaultPlayerColor, TeamColor.red)
+        
+        XCTAssertTrue(Constants.Defaults.teamColors.contains(TeamColor.blue))
+        XCTAssertTrue(Constants.Defaults.teamColors.contains(TeamColor.red))
+        XCTAssertEqual(Constants.Defaults.teamColors.count, 12)
+    }
+    
+    // MARK: - Color Accessibility Tests
     
     func testColorAccessibility() {
         // Test contrasting text color calculation
@@ -208,10 +256,10 @@ class ColorManagementTests: XCTestCase {
     
     func testColorUniqueness() {
         // Test that different colors are suggested for new entities
-        let player1 = createTestPlayer(name: "Player 1", displayOrder: 0)
-        let player2 = createTestPlayer(name: "Player 2", displayOrder: 1)
-        let team1 = createTestTeam(name: "Team 1", player: player1, displayOrder: 0)
-        let team2 = createTestTeam(name: "Team 2", player: player1, displayOrder: 1)
+        let player1 = Player(context: testContext)
+        let player2 = Player(context: testContext)
+        let team1 = Team(context: testContext)
+        let team2 = Team(context: testContext)
         
         // Test that default colors are assigned
         XCTAssertNotNil(player1.playerColor)
@@ -235,8 +283,8 @@ class ColorManagementTests: XCTestCase {
     
     func testThemeColorIntegration() {
         // Test that colors work with theme system
-        let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        let team = createTestTeam(name: "Test Team", player: player, displayOrder: 0)
+        let player = Player(context: testContext)
+        let team = Team(context: testContext)
         
         // Test theme color retrieval
         let playerColor = Theme.TeamColors.color(from: player.playerColor)
@@ -257,84 +305,27 @@ class ColorManagementTests: XCTestCase {
         
         // Test that all available colors are valid
         for color in availableColors {
-            let hex = color.toHex()
-            XCTAssertTrue(hex.hasPrefix("#"))
-            XCTAssertEqual(hex.count, 7)
+            let hex = color.rawValue
+            let _ = Color(hex: hex)
             
-            // Test color name conversion
+            // Test color name functionality
             let colorName = Theme.TeamColors.colorName(for: color)
             XCTAssertNotNil(colorName)
+            XCTAssertFalse(colorName.isEmpty)
         }
     }
     
     func testColorNameConversion() {
         // Test color name for storage
-        let testColors: [Color] = [.red, .blue, .green, .yellow, .purple, .orange]
+        let testColors: [TeamColor] = [.red, .blue, .green, .yellow, .purple, .orange]
         
         for color in testColors {
             let colorName = Theme.TeamColors.colorName(for: color)
             XCTAssertNotNil(colorName)
             
-            // Test that color name is a valid hex string
-            XCTAssertTrue(colorName.hasPrefix("#"))
-            XCTAssertEqual(colorName.count, 7)
+            // Test that color name is a valid TeamColor raw value
+            XCTAssertNotNil(TeamColor(rawValue: colorName))
         }
-    }
-    
-    // MARK: - Color Persistence Tests
-    
-    func testColorPersistence() {
-        let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        let team = createTestTeam(name: "Test Team", player: player, displayOrder: 0)
-        
-        // Set custom colors
-        let playerColor = Color.purple
-        let teamColor = Color.orange
-        
-        player.playerColor = playerColor.toHex()
-        team.teamColor = teamColor.toHex()
-        
-        try! testContext.save()
-        
-        // Create new viewModel to simulate reload
-        let newViewModel = PlayersViewModel(viewContext: testContext)
-        
-        // Verify colors persisted
-        let loadedPlayer = newViewModel.players.first
-        let loadedTeam = newViewModel.teams.first
-        
-        XCTAssertNotNil(loadedPlayer)
-        XCTAssertNotNil(loadedTeam)
-        
-        XCTAssertEqual(loadedPlayer?.playerColor, playerColor.toHex())
-        XCTAssertEqual(loadedTeam?.teamColor, teamColor.toHex())
-        
-        // Test color retrieval
-        let retrievedPlayerColor = newViewModel.getPlayerColor(loadedPlayer!)
-        let retrievedTeamColor = newViewModel.getTeamColor(loadedTeam!)
-        
-        XCTAssertNotNil(retrievedPlayerColor)
-        XCTAssertNotNil(retrievedTeamColor)
-    }
-    
-    func testColorUpdatePersistence() {
-        let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        try! testContext.save()
-        
-        // Update color
-        let newColor = Color.green
-        viewModel.updatePlayer(player, name: "Test Player", color: newColor, sport: "Basketball")
-        
-        // Verify color was updated
-        XCTAssertEqual(player.playerColor, newColor.toHex())
-        
-        // Create new viewModel to simulate reload
-        let newViewModel = PlayersViewModel(viewContext: testContext)
-        
-        // Verify color persisted
-        let loadedPlayer = newViewModel.players.first
-        XCTAssertNotNil(loadedPlayer)
-        XCTAssertEqual(loadedPlayer?.playerColor, newColor.toHex())
     }
     
     // MARK: - Color Edge Case Tests
@@ -362,13 +353,18 @@ class ColorManagementTests: XCTestCase {
     
     func testColorPerformance() {
         // Test color conversion performance
-        let colors = [Color.red, Color.blue, Color.green, Color.yellow, Color.purple, Color.orange]
+        let colors: [TeamColor] = [.red, .blue, .green, .yellow, .purple, .orange]
         
         measure {
             for _ in 0..<1000 {
                 for color in colors {
-                    let hex = color.toHex()
+                    let hex = color.rawValue
                     let _ = Color(hex: hex)
+                    
+                    // Test color name functionality
+                    let colorName = Theme.TeamColors.colorName(for: color)
+                    XCTAssertNotNil(colorName)
+                    XCTAssertFalse(colorName.isEmpty)
                 }
             }
         }
@@ -382,7 +378,7 @@ class ColorManagementTests: XCTestCase {
         player.name = name
         player.displayOrder = displayOrder
         player.sport = "Basketball"
-        player.playerColor = Constants.Defaults.defaultPlayerColor.toHex()
+        player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
         return player
     }
     
@@ -392,7 +388,7 @@ class ColorManagementTests: XCTestCase {
         team.name = name
         team.displayOrder = displayOrder
         team.sport = "Basketball"
-        team.teamColor = Constants.Defaults.defaultTeamColor.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.player = player
         return team
     }

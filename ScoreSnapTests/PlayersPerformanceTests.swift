@@ -159,7 +159,7 @@ class PlayersPerformanceTests: XCTestCase {
             // Simulate multiple form operations
             for i in 0..<100 {
                 let newName = "Updated Player \(i)"
-                let newColor = Color(red: Double(i % 255) / 255.0, green: 0.5, blue: 0.5)
+                let newColor = TeamColor.purple
                 
                 viewModel.updatePlayer(player, name: newName, color: newColor, sport: "Basketball")
             }
@@ -176,16 +176,12 @@ class PlayersPerformanceTests: XCTestCase {
         
         measure {
             // Simulate color picker operations
-            let colors: [Color] = [.red, .blue, .green, .yellow, .purple, .orange, .pink, .teal]
+            let colors: [TeamColor] = [.red, .blue, .green, .yellow, .purple, .orange, .pink, .teal]
             
             for _ in 0..<50 {
                 for color in colors {
-                    // Test color conversion operations
-                    let hex = color.toHex()
-                    let _ = Color(hex: hex)
-                    
                     // Test color application
-                    player.playerColor = hex
+                    player.playerColor = color.rawValue
                 }
             }
         }
@@ -247,7 +243,7 @@ class PlayersPerformanceTests: XCTestCase {
             for _ in 0..<20 {
                 // Simulate form operations that would occur in sheets
                 let newName = "Updated Player"
-                let newColor = Color.blue
+                let newColor = TeamColor.yellow
                 
                 viewModel.updatePlayer(player, name: newName, color: newColor, sport: "Basketball")
             }
@@ -310,7 +306,7 @@ class PlayersPerformanceTests: XCTestCase {
             // Update all players
             for (index, player) in players.enumerated() {
                 player.name = "Updated Player \(index)"
-                player.playerColor = Color(red: Double(index % 255) / 255.0, green: 0.5, blue: 0.5).toHex()
+                player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
             }
             
             try! testContext.save()
@@ -325,14 +321,13 @@ class PlayersPerformanceTests: XCTestCase {
     
     func testColorConversionPerformance() {
         // Test color conversion performance
-        let colors: [Color] = [.red, .blue, .green, .yellow, .purple, .orange, .pink, .teal, .indigo, .gray]
+        let colors: [TeamColor] = [.red, .blue, .green, .yellow, .purple, .orange, .pink, .teal, .indigo, .gray]
         
         measure {
             // Perform color conversions
             for _ in 0..<1000 {
                 for color in colors {
-                    let hex = color.toHex()
-                    let _ = Color(hex: hex)
+                    let _ = color.rawValue
                 }
             }
         }
@@ -345,11 +340,11 @@ class PlayersPerformanceTests: XCTestCase {
         
         measure {
             // Simulate color picker operations
-            let colors: [Color] = [.red, .blue, .green, .yellow, .purple, .orange, .pink, .teal]
+            let colors: [TeamColor] = [.red, .blue, .green, .yellow, .purple, .orange, .pink, .teal]
             
             for _ in 0..<100 {
                 for color in colors {
-                    player.playerColor = color.toHex()
+                    player.playerColor = color.rawValue
                 }
             }
         }
@@ -443,7 +438,7 @@ class PlayersPerformanceTests: XCTestCase {
         player.name = name
         player.displayOrder = displayOrder
         player.sport = "Basketball"
-        player.playerColor = Constants.Defaults.defaultPlayerColor.toHex()
+        player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
         return player
     }
     
@@ -453,7 +448,7 @@ class PlayersPerformanceTests: XCTestCase {
         team.name = name
         team.displayOrder = displayOrder
         team.sport = "Basketball"
-        team.teamColor = Constants.Defaults.defaultTeamColor.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.player = player
         return team
     }

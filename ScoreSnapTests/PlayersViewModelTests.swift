@@ -49,7 +49,7 @@ class PlayersViewModelTests: XCTestCase {
     func testPlayerCreation() {
         // Test player creation with correct properties
         let playerName = "Test Player"
-        let playerColor = Color.blue
+        let playerColor = TeamColor.red
         let sport = "Basketball"
         
         viewModel.createPlayer(name: playerName, color: playerColor, sport: sport)
@@ -58,7 +58,7 @@ class PlayersViewModelTests: XCTestCase {
         let createdPlayer = viewModel.players.first
         XCTAssertNotNil(createdPlayer)
         XCTAssertEqual(createdPlayer?.name, playerName)
-        XCTAssertEqual(createdPlayer?.playerColor, playerColor.toHex())
+        XCTAssertEqual(createdPlayer?.playerColor, playerColor.rawValue)
         XCTAssertEqual(createdPlayer?.sport, sport)
         XCTAssertEqual(createdPlayer?.displayOrder, 0)
         XCTAssertNotNil(createdPlayer?.id)
@@ -66,16 +66,16 @@ class PlayersViewModelTests: XCTestCase {
     
     func testPlayerCreationValidation() {
         // Test empty name rejection
-        viewModel.createPlayer(name: "", color: .blue, sport: "Basketball")
+        viewModel.createPlayer(name: "", color: .red, sport: "Basketball")
         XCTAssertEqual(viewModel.players.count, 0)
         
         // Test whitespace-only name rejection
-        viewModel.createPlayer(name: "   ", color: .blue, sport: "Basketball")
+        viewModel.createPlayer(name: "   ", color: .red, sport: "Basketball")
         XCTAssertEqual(viewModel.players.count, 0)
         
         // Test duplicate name rejection
-        viewModel.createPlayer(name: "Player 1", color: .blue, sport: "Basketball")
         viewModel.createPlayer(name: "Player 1", color: .red, sport: "Basketball")
+        viewModel.createPlayer(name: "Player 1", color: .blue, sport: "Basketball")
         XCTAssertEqual(viewModel.players.count, 1) // Only first player should be created
     }
     
@@ -121,14 +121,14 @@ class PlayersViewModelTests: XCTestCase {
         
         // Edit player
         let newName = "Updated Name"
-        let newColor = Color.red
+        let newColor = TeamColor.blue
         let newSport = "Basketball"
         
         viewModel.updatePlayer(player, name: newName, color: newColor, sport: newSport)
         
         // Verify changes
         XCTAssertEqual(player.name, newName)
-        XCTAssertEqual(player.playerColor, newColor.toHex())
+        XCTAssertEqual(player.playerColor, newColor.rawValue)
         XCTAssertEqual(player.sport, newSport)
     }
     
@@ -153,10 +153,10 @@ class PlayersViewModelTests: XCTestCase {
     func testPlayerCountTracking() {
         XCTAssertEqual(viewModel.players.count, 0)
         
-        viewModel.createPlayer(name: "Player 1", color: .blue, sport: "Basketball")
+        viewModel.createPlayer(name: "Player 1", color: .red, sport: "Basketball")
         XCTAssertEqual(viewModel.players.count, 1)
         
-        viewModel.createPlayer(name: "Player 2", color: .red, sport: "Basketball")
+        viewModel.createPlayer(name: "Player 2", color: .blue, sport: "Basketball")
         XCTAssertEqual(viewModel.players.count, 2)
         
         // Delete one player
@@ -171,7 +171,7 @@ class PlayersViewModelTests: XCTestCase {
         try! testContext.save()
         
         let teamName = "Test Team"
-        let teamColor = Color.red
+        let teamColor = TeamColor.green
         let sport = "Basketball"
         
         viewModel.createTeam(name: teamName, color: teamColor, player: player, sport: sport)
@@ -180,7 +180,7 @@ class PlayersViewModelTests: XCTestCase {
         let createdTeam = viewModel.teams.first
         XCTAssertNotNil(createdTeam)
         XCTAssertEqual(createdTeam?.name, teamName)
-        XCTAssertEqual(createdTeam?.teamColor, teamColor.toHex())
+        XCTAssertEqual(createdTeam?.teamColor, teamColor.rawValue)
         XCTAssertEqual(createdTeam?.sport, sport)
         XCTAssertEqual(createdTeam?.player, player)
         XCTAssertEqual(createdTeam?.displayOrder, 0)
@@ -192,12 +192,12 @@ class PlayersViewModelTests: XCTestCase {
         try! testContext.save()
         
         // Test empty name rejection
-        viewModel.createTeam(name: "", color: .red, player: player, sport: "Basketball")
+        viewModel.createTeam(name: "", color: .blue, player: player, sport: "Basketball")
         XCTAssertEqual(viewModel.teams.count, 0)
         
         // Test duplicate name rejection within same player
-        viewModel.createTeam(name: "Team 1", color: .red, player: player, sport: "Basketball")
         viewModel.createTeam(name: "Team 1", color: .blue, player: player, sport: "Basketball")
+        viewModel.createTeam(name: "Team 1", color: .red, player: player, sport: "Basketball")
         XCTAssertEqual(viewModel.teams.count, 1) // Only first team should be created
     }
     
@@ -239,13 +239,13 @@ class PlayersViewModelTests: XCTestCase {
         try! testContext.save()
         
         let newName = "Updated Team"
-        let newColor = Color.green
+        let newColor = TeamColor.purple
         let newSport = "Basketball"
         
         viewModel.updateTeam(team, name: newName, color: newColor, sport: newSport)
         
         XCTAssertEqual(team.name, newName)
-        XCTAssertEqual(team.teamColor, newColor.toHex())
+        XCTAssertEqual(team.teamColor, newColor.rawValue)
         XCTAssertEqual(team.sport, newSport)
     }
     
@@ -499,50 +499,45 @@ class PlayersViewModelTests: XCTestCase {
     
     // MARK: - Color Management Tests
     
-    func testColorAssignment() {
+    func testTeamColorAssignment() {
         let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        let color = Color.red
+        let teamColor = TeamColor.red
         
-        viewModel.updatePlayer(player, name: "Test Player", color: color, sport: "Basketball")
+        viewModel.updatePlayer(player, name: "Test Player", color: teamColor, sport: "Basketball")
         
-        XCTAssertEqual(player.playerColor, color.toHex())
-        XCTAssertTrue(player.playerColor!.hasPrefix("#"))
-        XCTAssertEqual(player.playerColor!.count, 7) // #RRGGBB format
+        XCTAssertEqual(player.playerColor, teamColor.rawValue)
     }
     
-    func testColorValidation() {
-        // Test valid hex colors
-        let validColors = ["#FF0000", "#00FF00", "#0000FF", "#FFFFFF", "#000000"]
-        
-        for hexColor in validColors {
-            let color = Color(hex: hexColor)
-            XCTAssertNotNil(color)
+    func testTeamColorValidation() {
+        // Test valid TeamColor values
+        for teamColor in TeamColor.allCases {
+            XCTAssertNotNil(TeamColor(rawValue: teamColor.rawValue))
+            XCTAssertEqual(TeamColor(rawValue: teamColor.rawValue), teamColor)
         }
         
-        // Test invalid hex colors
-        let invalidColors = ["#GG0000", "FF0000", "#FF00", "#FF00000", "invalid"]
-        
-        for hexColor in invalidColors {
-            let color = Color(hex: hexColor)
-            // Should still create a color (fallback behavior)
-            XCTAssertNotNil(color)
+        // Test invalid TeamColor values
+        let invalidColors = ["invalid", "RED", "Blue123", ""]
+        for invalidColor in invalidColors {
+            XCTAssertNil(TeamColor(rawValue: invalidColor))
         }
     }
     
-    func testDefaultColorAssignment() {
-        // Create multiple players to test unique default colors
+    func testDefaultTeamColorAssignment() {
+        // Create multiple players to test default colors
         viewModel.createPlayer(name: "Player 1", color: Constants.Defaults.defaultPlayerColor, sport: "Basketball")
         viewModel.createPlayer(name: "Player 2", color: Constants.Defaults.defaultPlayerColor, sport: "Basketball")
         
         XCTAssertEqual(viewModel.players.count, 2)
         XCTAssertNotNil(viewModel.players[0].playerColor)
         XCTAssertNotNil(viewModel.players[1].playerColor)
+        XCTAssertEqual(viewModel.players[0].playerColor, Constants.Defaults.defaultPlayerColor.rawValue)
+        XCTAssertEqual(viewModel.players[1].playerColor, Constants.Defaults.defaultPlayerColor.rawValue)
     }
     
-    func testColorPersistence() {
+    func testTeamColorPersistence() {
         let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        let originalColor = Color.blue
-        player.playerColor = originalColor.toHex()
+        let originalColor = TeamColor.blue
+        player.playerColor = originalColor.rawValue
         
         try! testContext.save()
         
@@ -551,26 +546,26 @@ class PlayersViewModelTests: XCTestCase {
         
         let loadedPlayer = newViewModel.players.first
         XCTAssertNotNil(loadedPlayer)
-        XCTAssertEqual(loadedPlayer?.playerColor, originalColor.toHex())
+        XCTAssertEqual(loadedPlayer?.playerColor, originalColor.rawValue)
         
         // Test color conversion back to SwiftUI Color
         let loadedColor = newViewModel.getPlayerColor(loadedPlayer!)
-        XCTAssertNotNil(loadedColor)
+        XCTAssertEqual(loadedColor, originalColor.color)
     }
     
-    func testColorPickerIntegration() {
+    func testTeamColorPickerIntegration() {
         let player = createTestPlayer(name: "Test Player", displayOrder: 0)
-        let newColor = Color.green
+        let newColor = TeamColor.green
         
         // Simulate color picker selection
         viewModel.updatePlayer(player, name: "Test Player", color: newColor, sport: "Basketball")
         
         // Verify color was updated
-        XCTAssertEqual(player.playerColor, newColor.toHex())
+        XCTAssertEqual(player.playerColor, newColor.rawValue)
         
         // Test color retrieval
         let retrievedColor = viewModel.getPlayerColor(player)
-        XCTAssertNotNil(retrievedColor)
+        XCTAssertEqual(retrievedColor, newColor.color)
     }
     
     // MARK: - Helper Methods
@@ -581,7 +576,7 @@ class PlayersViewModelTests: XCTestCase {
         player.name = name
         player.displayOrder = displayOrder
         player.sport = "Basketball"
-        player.playerColor = Constants.Defaults.defaultPlayerColor.toHex()
+        player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
         return player
     }
     
@@ -591,7 +586,7 @@ class PlayersViewModelTests: XCTestCase {
         team.name = name
         team.displayOrder = displayOrder
         team.sport = "Basketball"
-        team.teamColor = Constants.Defaults.defaultTeamColor.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.player = player
         return team
     }

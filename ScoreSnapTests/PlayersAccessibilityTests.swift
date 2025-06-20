@@ -217,8 +217,8 @@ class PlayersAccessibilityTests: XCTestCase {
         let colors: [Color] = [.red, .blue, .green, .yellow, .purple, .orange, .pink, .teal]
         
         for color in colors {
-            player.playerColor = color.toHex()
-            team.teamColor = color.toHex()
+            player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
+            team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
             
             // Test color contrast
             let contrast = calculateColorContrast(color, with: .white)
@@ -242,8 +242,8 @@ class PlayersAccessibilityTests: XCTestCase {
         let colorNames = ["red", "blue", "green", "yellow", "purple", "orange"]
         
         for (color, name) in zip(colors, colorNames) {
-            player.playerColor = color.toHex()
-            team.teamColor = color.toHex()
+            player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
+            team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
             
             // Test color name accessibility
             let playerLabel = generateColorNameAccessibilityLabel(player, colorName: name)
@@ -388,7 +388,7 @@ class PlayersAccessibilityTests: XCTestCase {
         player.name = name
         player.displayOrder = displayOrder
         player.sport = "Basketball"
-        player.playerColor = Constants.Defaults.defaultPlayerColor.toHex()
+        player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
         return player
     }
     
@@ -398,7 +398,7 @@ class PlayersAccessibilityTests: XCTestCase {
         team.name = name
         team.displayOrder = displayOrder
         team.sport = "Basketball"
-        team.teamColor = Constants.Defaults.defaultTeamColor.toHex()
+        team.teamColor = Constants.Defaults.defaultTeamColor.rawValue
         team.player = player
         return team
     }

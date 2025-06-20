@@ -11,6 +11,8 @@ struct MainTabView: View {
     @EnvironmentObject var appContext: AppContext
     @State private var selectedTab = 0
     @State private var showingUploadView = false
+    @State private var showingSetupView = false
+    @State private var showingSettingsView = false
     
     var body: some View {
         ZStack {
@@ -35,6 +37,13 @@ struct MainTabView: View {
                         Text(Constants.TabBar.playersTitle)
                     }
                     .tag(2)
+                
+                SettingsTabView()
+                    .tabItem {
+                        Image(systemName: "gear")
+                        Text("Settings")
+                    }
+                    .tag(3)
             }
             .accentColor(Theme.Colors.primary)
             
@@ -52,8 +61,28 @@ struct MainTabView: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $showingSetupView) {
+            SetupView()
+        }
         .sheet(isPresented: $showingUploadView) {
             UploadView()
+        }
+        .sheet(isPresented: $showingSettingsView) {
+            SettingsView()
+        }
+        .onAppear {
+            checkSetupStatus()
+        }
+        .onChange(of: appContext.needsSetup) { needsSetup in
+            if needsSetup {
+                showingSetupView = true
+            }
+        }
+    }
+    
+    private func checkSetupStatus() {
+        if appContext.needsSetup {
+            showingSetupView = true
         }
     }
 }
@@ -178,6 +207,43 @@ struct RecordStatView: View {
             Text(title)
                 .font(Theme.Typography.caption)
                 .foregroundColor(Theme.Colors.secondaryText)
+        }
+    }
+}
+
+// MARK: - Settings Tab View
+
+struct SettingsTabView: View {
+    @State private var showingSettingsView = false
+    
+    var body: some View {
+        NavigationView {
+            VStack(spacing: Theme.Spacing.xl) {
+                Image(systemName: "gear")
+                    .font(.system(size: 64))
+                    .foregroundColor(Theme.Colors.secondaryText)
+                
+                Text("Settings")
+                    .font(Theme.Typography.title2)
+                    .foregroundColor(Theme.Colors.primaryText)
+                
+                Text("Tap to open app settings")
+                    .font(Theme.Typography.body)
+                    .foregroundColor(Theme.Colors.secondaryText)
+                    .multilineTextAlignment(.center)
+                
+                Button("Open Settings") {
+                    showingSettingsView = true
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Theme.Colors.background)
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .sheet(isPresented: $showingSettingsView) {
+            SettingsView()
         }
     }
 }
