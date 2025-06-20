@@ -12,17 +12,22 @@ import CoreLocation
 
 @MainActor
 class ServicesManager: ObservableObject {
-    // MARK: - Services
+    // MARK: - Properties
     
-    @Published var photoService: PhotoService
-    @Published var locationService: LocationService
-    @Published var apiLimiter: APILimiter
+    let photoService: PhotoService
+    let locationService: LocationService
+    let apiLimiter: APILimiter
+    let keychainService: KeychainService
+    lazy var claudeAIService: ClaudeAIService = {
+        return ClaudeAIService(apiLimiter: self.apiLimiter, keychainService: self.keychainService)
+    }()
     
-    // MARK: - Service States
-    
-    @Published var isPhotoServiceReady = false
-    @Published var isLocationServiceReady = false
-    @Published var isAPILimiterReady = false
+    // Service readiness flags
+    @Published var isPhotoServiceReady: Bool = false
+    @Published var isLocationServiceReady: Bool = false
+    @Published var isAPILimiterReady: Bool = false
+    @Published var isKeychainServiceReady: Bool = false
+    @Published var isClaudeAIServiceReady: Bool = false
     
     @Published var serviceErrors: [ServiceError] = []
     
@@ -34,9 +39,12 @@ class ServicesManager: ObservableObject {
         self.photoService = PhotoService()
         self.locationService = LocationService()
         self.apiLimiter = APILimiter()
+        self.keychainService = KeychainService()
         
         setupServiceObservers()
         checkServiceReadiness()
+        
+        SecurityUtils.secureLog("ServicesManager initialized with secure keychain integration", level: .info)
     }
     
     // MARK: - Service Coordination
@@ -54,6 +62,14 @@ class ServicesManager: ObservableObject {
             
             group.addTask {
                 await self.initializeAPILimiter()
+            }
+            
+            group.addTask {
+                await self.initializeKeychainService()
+            }
+            
+            group.addTask {
+                await self.initializeClaudeAIService()
             }
         }
         
@@ -77,6 +93,16 @@ class ServicesManager: ObservableObject {
         isAPILimiterReady = true
     }
     
+    private func initializeKeychainService() async {
+        // KeychainService is ready if keychain is available
+        isKeychainServiceReady = keychainService.isKeychainAvailable
+    }
+    
+    private func initializeClaudeAIService() async {
+        // ClaudeAIService is ready if API key is configured and keychain is available
+        isClaudeAIServiceReady = keychainService.isKeychainAvailable && claudeAIService.hasValidAPIKey()
+    }
+    
     // MARK: - Photo Operations
     
     func capturePhoto(from viewController: UIViewController) async throws -> UIImage {
@@ -97,7 +123,7 @@ class ServicesManager: ObservableObject {
             switch validationResult {
             case .success(let validatedImage):
                 // Record API call
-                apiLimiter.recordAPICall()
+                let _ = apiLimiter.recordAPICall()
                 return validatedImage
             case .failure(let error):
                 throw ServiceError.photoValidationFailed(error)
@@ -125,7 +151,7 @@ class ServicesManager: ObservableObject {
             switch validationResult {
             case .success(let validatedImage):
                 // Record API call
-                apiLimiter.recordAPICall()
+                let _ = apiLimiter.recordAPICall()
                 return validatedImage
             case .failure(let error):
                 throw ServiceError.photoValidationFailed(error)
@@ -185,6 +211,71 @@ class ServicesManager: ObservableObject {
         locationService.requestLocationPermission()
     }
     
+    // MARK: - AI Analysis Operations
+    
+    func analyzeScoreboardImage(_ image: UIImage) async throws -> ScoreboardAnalysis {
+        guard isClaudeAIServiceReady else {
+            throw ServiceError.claudeAIServiceNotReady
+        }
+        
+        // Check API limits
+        guard apiLimiter.canMakeAPICall() else {
+            throw ServiceError.apiLimitExceeded
+        }
+        
+        do {
+            let analysis = try await claudeAIService.analyzeScoreboard(image)
+            return analysis
+        } catch {
+            throw ServiceError.aiAnalysisFailed(error)
+        }
+    }
+    
+    func setClaudeAPIKey(_ key: String) throws {
+        do {
+            try claudeAIService.setAPIKey(key)
+            isClaudeAIServiceReady = claudeAIService.hasValidAPIKey()
+            SecurityUtils.secureLog("Claude API key set successfully", level: .info)
+        } catch {
+            SecurityUtils.secureLogError(error, context: "Failed to set Claude API key")
+            throw ServiceError.apiKeyManagementFailed(error)
+        }
+    }
+    
+    func hasValidClaudeAPIKey() -> Bool {
+        return claudeAIService.hasValidAPIKey()
+    }
+    
+    func clearClaudeAPIKey() {
+        claudeAIService.clearAPIKey()
+        isClaudeAIServiceReady = false
+        SecurityUtils.secureLog("Claude API key cleared", level: .info)
+    }
+    
+    func getLastAnalysisResult() -> ScoreboardAnalysis? {
+        return claudeAIService.getLastAnalysisResult()
+    }
+    
+    func clearLastAnalysisResult() {
+        claudeAIService.clearLastResult()
+    }
+    
+    // MARK: - Keychain Operations
+    
+    func getKeychainStatus() -> KeychainStatus {
+        return keychainService.getKeychainStatus()
+    }
+    
+    func clearAllKeys() throws {
+        try keychainService.clearAllKeys()
+        isClaudeAIServiceReady = false
+        SecurityUtils.secureLog("All keys cleared from keychain", level: .info)
+    }
+    
+    func authenticateWithBiometrics() async throws -> Bool {
+        return try await keychainService.authenticateWithBiometrics()
+    }
+    
     // MARK: - API Operations (Internal Only)
     
     func canMakeAPICall() -> Bool {
@@ -214,7 +305,7 @@ class ServicesManager: ObservableObject {
             locationName = try await getCurrentLocationName()
         } catch {
             // Location is optional, so we don't throw here
-            print("Location not available: \(error.localizedDescription)")
+            SecurityUtils.secureLog("Location not available: \(error.localizedDescription)", level: .warning)
         }
         
         // Extract EXIF metadata
@@ -242,7 +333,7 @@ class ServicesManager: ObservableObject {
             locationName = try await getCurrentLocationName()
         } catch {
             // Location is optional, so we don't throw here
-            print("Location not available: \(error.localizedDescription)")
+            SecurityUtils.secureLog("Location not available: \(error.localizedDescription)", level: .warning)
         }
         
         // Extract EXIF metadata
@@ -297,6 +388,13 @@ class ServicesManager: ObservableObject {
             }
             .store(in: &cancellables)
         
+        // Monitor keychain service state
+        keychainService.$isKeychainAvailable
+            .sink { [weak self] keychainAvailable in
+                self?.isKeychainServiceReady = keychainAvailable
+            }
+            .store(in: &cancellables)
+        
         // Monitor API limiter state
         apiLimiter.$isLimitExceeded
             .sink { [weak self] limitExceeded in
@@ -313,6 +411,14 @@ class ServicesManager: ObservableObject {
                 self?.addServiceError(.locationError(error))
             }
             .store(in: &cancellables)
+        
+        // Monitor keychain errors
+        keychainService.$lastError
+            .compactMap { $0 }
+            .sink { [weak self] error in
+                self?.addServiceError(.keychainError(error))
+            }
+            .store(in: &cancellables)
     }
     
     private func checkServiceReadiness() {
@@ -321,6 +427,8 @@ class ServicesManager: ObservableObject {
                                 (locationService.authorizationStatus == .authorizedWhenInUse || 
                                  locationService.authorizationStatus == .authorizedAlways)
         isAPILimiterReady = true // Always ready after initialization
+        isKeychainServiceReady = keychainService.isKeychainAvailable
+        isClaudeAIServiceReady = keychainService.isKeychainAvailable && claudeAIService.hasValidAPIKey()
     }
     
     private func addServiceError(_ error: ServiceError) {
@@ -339,9 +447,13 @@ class ServicesManager: ObservableObject {
             photoServiceReady: isPhotoServiceReady,
             locationServiceReady: isLocationServiceReady,
             apiLimiterReady: isAPILimiterReady,
+            keychainServiceReady: isKeychainServiceReady,
+            claudeAIServiceReady: isClaudeAIServiceReady,
             photoServiceDebug: photoService.isCameraAvailable ? "Camera Available" : "Camera Not Available",
             locationServiceDebug: locationService.isLocationEnabled ? "Location Enabled" : "Location Disabled",
             apiLimiterDebug: apiLimiter.getDebugInfo(),
+            keychainServiceDebug: keychainService.isKeychainAvailable ? "Keychain Available" : "Keychain Not Available",
+            claudeAIServiceDebug: claudeAIService.hasValidAPIKey() ? "API Key Configured" : "No API Key",
             serviceErrors: serviceErrors
         )
     }
@@ -379,6 +491,10 @@ enum ServiceError: LocalizedError, Equatable {
     case locationRetrievalFailed(Error)
     case locationGeocodingFailed(Error)
     case locationError(LocationError)
+    case claudeAIServiceNotReady
+    case aiAnalysisFailed(Error)
+    case apiKeyManagementFailed(Error)
+    case keychainError(Error)
     
     var errorDescription: String? {
         switch self {
@@ -400,6 +516,14 @@ enum ServiceError: LocalizedError, Equatable {
             return "Location geocoding failed: \(error.localizedDescription)"
         case .locationError(let error):
             return "Location error: \(error.localizedDescription)"
+        case .claudeAIServiceNotReady:
+            return "Claude AI service is not ready"
+        case .aiAnalysisFailed(let error):
+            return "AI analysis failed: \(error.localizedDescription)"
+        case .apiKeyManagementFailed(let error):
+            return "API key management failed: \(error.localizedDescription)"
+        case .keychainError(let error):
+            return "Keychain error: \(error.localizedDescription)"
         }
     }
     
@@ -416,6 +540,14 @@ enum ServiceError: LocalizedError, Equatable {
              (.locationGeocodingFailed, .locationGeocodingFailed),
              (.locationError, .locationError):
             return true
+        case (.claudeAIServiceNotReady, .claudeAIServiceNotReady):
+            return true
+        case (.aiAnalysisFailed, .aiAnalysisFailed):
+            return true
+        case (.apiKeyManagementFailed, .apiKeyManagementFailed):
+            return true
+        case (.keychainError, .keychainError):
+            return true
         default:
             return false
         }
@@ -426,13 +558,17 @@ struct ServicesDebugInfo {
     let photoServiceReady: Bool
     let locationServiceReady: Bool
     let apiLimiterReady: Bool
+    let keychainServiceReady: Bool
+    let claudeAIServiceReady: Bool
     let photoServiceDebug: String
     let locationServiceDebug: String
     let apiLimiterDebug: APIDebugInfo
+    let keychainServiceDebug: String
+    let claudeAIServiceDebug: String
     let serviceErrors: [ServiceError]
     
     var allServicesReady: Bool {
-        return photoServiceReady && locationServiceReady && apiLimiterReady
+        return photoServiceReady && locationServiceReady && apiLimiterReady && keychainServiceReady && claudeAIServiceReady
     }
     
     var description: String {
@@ -441,6 +577,8 @@ struct ServicesDebugInfo {
         - Photo Service: \(photoServiceReady ? "Ready" : "Not Ready") (\(photoServiceDebug))
         - Location Service: \(locationServiceReady ? "Ready" : "Not Ready") (\(locationServiceDebug))
         - API Limiter: \(apiLimiterReady ? "Ready" : "Not Ready")
+        - Keychain Service: \(keychainServiceReady ? "Ready" : "Not Ready") (\(keychainServiceDebug))
+        - Claude AI Service: \(claudeAIServiceReady ? "Ready" : "Not Ready") (\(claudeAIServiceDebug))
         - All Services Ready: \(allServicesReady)
         - Service Errors: \(serviceErrors.count)
         
