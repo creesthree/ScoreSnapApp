@@ -41,6 +41,7 @@ struct Theme {
         static let cardBackground = Color(.systemBackground)
         static let surfaceBackground = Color(.secondarySystemBackground)
         static let divider = Color(.separator)
+        static let border = Color(.separator)
         
         // Interactive Colors
         static let buttonBackground = Color.blue

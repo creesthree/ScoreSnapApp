@@ -11,7 +11,6 @@ struct MainTabView: View {
     @EnvironmentObject var appContext: AppContext
     @State private var selectedTab = 0
     @State private var showingUploadView = false
-    @State private var showingSetupView = false
     @State private var showingSettingsView = false
     
     var body: some View {
@@ -61,28 +60,11 @@ struct MainTabView: View {
                 }
             }
         }
-        .fullScreenCover(isPresented: $showingSetupView) {
-            SetupView()
-        }
         .sheet(isPresented: $showingUploadView) {
             UploadView()
         }
         .sheet(isPresented: $showingSettingsView) {
             SettingsView()
-        }
-        .onAppear {
-            checkSetupStatus()
-        }
-        .onChange(of: appContext.needsSetup) { needsSetup in
-            if needsSetup {
-                showingSetupView = true
-            }
-        }
-    }
-    
-    private func checkSetupStatus() {
-        if appContext.needsSetup {
-            showingSetupView = true
         }
     }
 }
@@ -122,26 +104,7 @@ struct FloatingActionButton: View {
 // HomeView is now implemented in Views/Home/HomeView.swift
 // PlayersView is now implemented in Views/Players/PlayersView.swift
 
-struct GamesView: View {
-    @EnvironmentObject var appContext: AppContext
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                if appContext.needsSetup {
-                    SetupPlaceholderView()
-                } else {
-                    Text("Games View - Coming Soon")
-                        .font(Theme.Typography.title2)
-                        .foregroundColor(Theme.Colors.secondaryText)
-                }
-                Spacer()
-            }
-            .navigationTitle(Constants.TabBar.gamesTitle)
-            .background(Theme.Colors.background)
-        }
-    }
-}
+// GamesView is now implemented in Views/Games/GamesView.swift
 
 // MARK: - Helper Views
 

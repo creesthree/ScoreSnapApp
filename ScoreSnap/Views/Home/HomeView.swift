@@ -44,7 +44,10 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showingGameEdit) {
                 if let game = selectedGame {
-                    GameEditView(game: game)
+                    GameEditView(game: game) {
+                        // Refresh data after game edit
+                        viewModel.refreshData(for: appContext.currentTeam)
+                    }
                 }
             }
             .alert("Validation Error", isPresented: $showingValidationAlert) {
@@ -93,7 +96,10 @@ struct HomeContentView: View {
         }
         .sheet(isPresented: $showingGameEdit) {
             if let game = selectedGame {
-                GameEditView(game: game)
+                GameEditView(game: game) {
+                    // Refresh data after game edit
+                    viewModel.refreshData(for: appContext.currentTeam)
+                }
             }
         }
     }
@@ -278,47 +284,7 @@ struct SetupPlaceholderView: View {
     }
 }
 
-struct GameEditView: View {
-    let game: Game
-    @Environment(\.dismiss) private var dismiss
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                Text("Game Edit View")
-                    .font(Theme.Typography.title2)
-                
-                Text("Editing: \(game.opponentName ?? "Unknown")")
-                    .font(Theme.Typography.body)
-                
-                Text("Score: \(game.teamScore) - \(game.opponentScore)")
-                    .font(Theme.Typography.body)
-                
-                Spacer()
-                
-                Text("TODO: Implement game editing")
-                    .font(Theme.Typography.caption)
-                    .foregroundColor(Theme.Colors.secondaryText)
-            }
-            .navigationTitle("Edit Game")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        // TODO: Save changes
-                        dismiss()
-                    }
-                }
-            }
-        }
-    }
-}
+// GameEditView is now implemented in Views/Games/GameEditView.swift
 
 #Preview {
     HomeView()

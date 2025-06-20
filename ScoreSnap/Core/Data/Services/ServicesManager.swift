@@ -257,6 +257,20 @@ class ServicesManager: ObservableObject {
         return ocrService.getLastAnalysisResult()
     }
     
+    // MARK: - Service Access Methods
+    
+    func getOCRService() -> OCRService {
+        return ocrService
+    }
+    
+    func getLocationService() -> LocationService {
+        return locationService
+    }
+    
+    func getPhotoService() -> PhotoService {
+        return photoService
+    }
+    
     func clearLastOCRResult() {
         ocrService.clearLastResult()
     }

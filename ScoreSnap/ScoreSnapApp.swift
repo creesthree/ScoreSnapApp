@@ -5,7 +5,6 @@
 //  Created by CHRISTOPHER LAU on 6/16/25.
 //
 
-//Stubbed Build Phase 1 teset code
 import SwiftUI
 
 @main
@@ -14,10 +13,9 @@ struct ScoreSnapApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(AppContext(viewContext: persistenceController.container.viewContext))
         }
     }
-}
-
+} 

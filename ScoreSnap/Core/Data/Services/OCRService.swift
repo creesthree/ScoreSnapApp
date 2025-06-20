@@ -384,11 +384,62 @@ struct ClaudeUsage: Codable {
 
 // Generic OCR result models
 struct ScoreboardAnalysis: Codable {
+    let detectedScore: DetectedScore?
+    let confidence: Double
+    let period: String?
+    let timeRemaining: String?
+    let additionalInfo: String?
+    
+    // Legacy support for old format
     let homeTeam: TeamScore?
     let awayTeam: TeamScore?
     let gameInfo: GameInfo?
-    let confidence: Double?
     let notes: String?
+    
+    init(detectedScore: DetectedScore?, confidence: Double, period: String? = nil, timeRemaining: String? = nil, additionalInfo: String? = nil) {
+        self.detectedScore = detectedScore
+        self.confidence = confidence
+        self.period = period
+        self.timeRemaining = timeRemaining
+        self.additionalInfo = additionalInfo
+        
+        // Legacy fields
+        self.homeTeam = nil
+        self.awayTeam = nil
+        self.gameInfo = nil
+        self.notes = additionalInfo
+    }
+    
+    // Legacy initializer
+    init(homeTeam: TeamScore?, awayTeam: TeamScore?, gameInfo: GameInfo?, confidence: Double?, notes: String?) {
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+        self.gameInfo = gameInfo
+        self.notes = notes
+        
+        // Convert to new format
+        if let home = homeTeam?.score, let away = awayTeam?.score {
+            self.detectedScore = DetectedScore(homeScore: home, awayScore: away)
+        } else {
+            self.detectedScore = nil
+        }
+        
+        self.confidence = confidence ?? 0.0
+        
+        if let quarter = gameInfo?.quarter {
+            self.period = "Quarter \(quarter)"
+        } else {
+            self.period = nil
+        }
+        
+        self.timeRemaining = gameInfo?.timeRemaining
+        self.additionalInfo = notes
+    }
+}
+
+struct DetectedScore: Codable {
+    let homeScore: Int
+    let awayScore: Int
 }
 
 struct TeamScore: Codable {

@@ -272,9 +272,6 @@ struct TeamCreationStepView: View {
             
             Spacer()
         }
-        .onAppear {
-            viewModel.createPlayerAndTeam()
-        }
     }
 }
 

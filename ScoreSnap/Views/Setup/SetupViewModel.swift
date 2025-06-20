@@ -93,6 +93,8 @@ class SetupViewModel: ObservableObject {
             }
         case .teamCreation:
             if !teamName.isEmpty {
+                // Create player and team when moving from team creation to permissions
+                createPlayerAndTeam()
                 currentStep = .permissions
             } else {
                 showError("Please enter a team name")
@@ -138,6 +140,8 @@ class SetupViewModel: ObservableObject {
             player.id = UUID()
             player.name = playerName.trimmingCharacters(in: .whitespacesAndNewlines)
             player.displayOrder = getNextPlayerDisplayOrder()
+            player.sport = "Basketball"
+            player.playerColor = Constants.Defaults.defaultPlayerColor.rawValue
             
             // Create team
             let team = Team(context: viewContext)
@@ -145,6 +149,7 @@ class SetupViewModel: ObservableObject {
             team.name = teamName.trimmingCharacters(in: .whitespacesAndNewlines)
             team.teamColor = teamColor.rawValue
             team.displayOrder = 0
+            team.sport = "Basketball"
             team.player = player
             
             // Save to Core Data
