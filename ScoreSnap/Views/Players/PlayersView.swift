@@ -11,6 +11,7 @@ import CoreData
 struct PlayersView: View {
     @EnvironmentObject var appContext: AppContext
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.editMode) private var editMode
     
     @StateObject private var viewModel: PlayersViewModel
     @State private var showingAddPlayer = false
@@ -25,6 +26,10 @@ struct PlayersView: View {
     
     init() {
         self._viewModel = StateObject(wrappedValue: PlayersViewModel(viewContext: PersistenceController.shared.container.viewContext))
+    }
+    
+    private var isEditMode: Bool {
+        editMode?.wrappedValue == .active
     }
     
     var body: some View {
@@ -43,11 +48,6 @@ struct PlayersView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
-                        .onTapGesture {
-                            withAnimation(Theme.Animation.standard) {
-                                viewModel.isEditMode.toggle()
-                            }
-                        }
                 }
             }
             .sheet(isPresented: $showingAddPlayer) {
@@ -107,6 +107,9 @@ struct PlayersView: View {
                             return
                         }
                         viewModel.updatePlayer(player, name: name, color: color, sport: sport)
+                    },
+                    onDelete: {
+                        viewModel.deletePlayer(player)
                     }
                 )
             }
@@ -162,7 +165,6 @@ struct PlayersView: View {
                         PlayerRowView(
                             player: player,
                             isSelected: appContext.currentPlayer?.id == player.id,
-                            isEditMode: viewModel.isEditMode,
                             onTap: {
                                 appContext.switchToPlayer(player)
                             },
@@ -176,6 +178,7 @@ struct PlayersView: View {
                         )
                     }
                     .onMove(perform: viewModel.movePlayer)
+                    .onDelete(perform: deletePlayer)
                     
                     // Add Player Button
                     Button(action: {
@@ -188,7 +191,7 @@ struct PlayersView: View {
                                 .foregroundColor(Theme.Colors.primary)
                         }
                     }
-                    .disabled(viewModel.isEditMode)
+                    .disabled(isEditMode)
                 }
                 
                 // Teams Section
@@ -216,7 +219,6 @@ struct PlayersView: View {
                                     EditableTeamRowView(
                                         team: team,
                                         isSelected: appContext.currentTeam?.id == team.id,
-                                        isEditMode: viewModel.isEditMode,
                                         onTap: {
                                             appContext.switchToPlayerAndTeam(player, team)
                                         },
@@ -231,6 +233,9 @@ struct PlayersView: View {
                                 }
                                 .onMove { source, destination in
                                     viewModel.moveTeam(from: source, to: destination, for: player)
+                                }
+                                .onDelete { indexSet in
+                                    deleteTeam(from: indexSet, for: player)
                                 }
                             }
                         }
@@ -250,7 +255,7 @@ struct PlayersView: View {
                                 .foregroundColor(Theme.Colors.primary)
                         }
                     }
-                    .disabled(viewModel.isEditMode || viewModel.players.isEmpty)
+                    .disabled(isEditMode || viewModel.players.isEmpty)
                 }
             }
             .listStyle(InsetGroupedListStyle())
@@ -303,6 +308,31 @@ struct PlayersView: View {
         .padding(Theme.Spacing.xl)
     }
     
+    // MARK: - Delete Functions
+    
+    private func deletePlayer(at offsets: IndexSet) {
+        for index in offsets {
+            let player = viewModel.players[index]
+            viewModel.deletePlayer(player)
+            // Handle AppContext if this was the current player
+            if appContext.currentPlayer?.id == player.id {
+                appContext.handlePlayerDeletion(player)
+            }
+        }
+    }
+    
+    private func deleteTeam(from offsets: IndexSet, for player: Player) {
+        let playerTeams = viewModel.teamsForPlayer(player)
+        for index in offsets {
+            let team = playerTeams[index]
+            viewModel.deleteTeam(team)
+            // Handle AppContext if this was the current team
+            if appContext.currentTeam?.id == team.id {
+                appContext.handleTeamDeletion(team)
+            }
+        }
+    }
+    
     // MARK: - Helper Methods
     
     private var deleteConfirmationMessage: String {
@@ -337,21 +367,24 @@ struct PlayersView: View {
 struct PlayerRowView: View {
     let player: Player
     let isSelected: Bool
-    let isEditMode: Bool
     let onTap: () -> Void
     let onEdit: () -> Void
     let onDelete: () -> Void
     
+    @Environment(\.editMode) private var editMode
     @StateObject private var viewModel: PlayersViewModel
     
-    init(player: Player, isSelected: Bool, isEditMode: Bool, onTap: @escaping () -> Void, onEdit: @escaping () -> Void, onDelete: @escaping () -> Void) {
+    init(player: Player, isSelected: Bool, onTap: @escaping () -> Void, onEdit: @escaping () -> Void, onDelete: @escaping () -> Void) {
         self.player = player
         self.isSelected = isSelected
-        self.isEditMode = isEditMode
         self.onTap = onTap
         self.onEdit = onEdit
         self.onDelete = onDelete
         self._viewModel = StateObject(wrappedValue: PlayersViewModel(viewContext: PersistenceController.shared.container.viewContext))
+    }
+    
+    private var isEditMode: Bool {
+        editMode?.wrappedValue == .active
     }
     
     var body: some View {
@@ -373,26 +406,11 @@ struct PlayerRowView: View {
             
             Spacer()
             
-            // Selection indicator
-            if isSelected {
+            // Selection indicator (only show when not in edit mode)
+            if isSelected && !isEditMode {
                 Image(systemName: "checkmark.circle.fill")
                     .foregroundColor(Theme.Colors.primary)
                     .font(.body.weight(.semibold))
-            }
-            
-            // Edit/Delete buttons in edit mode
-            if isEditMode {
-                HStack(spacing: Theme.Spacing.sm) {
-                    Button(action: onEdit) {
-                        Image(systemName: "pencil")
-                            .foregroundColor(Theme.Colors.primary)
-                    }
-                    
-                    Button(action: onDelete) {
-                        Image(systemName: "trash")
-                            .foregroundColor(Theme.Colors.error)
-                    }
-                }
             }
         }
         .padding(.vertical, Theme.Spacing.xs)
@@ -404,8 +422,18 @@ struct PlayerRowView: View {
         }
         .background(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.sm)
-                .fill(isSelected ? Theme.Colors.primary.opacity(0.1) : Color.clear)
+                .fill(isSelected && !isEditMode ? Theme.Colors.primary.opacity(0.1) : Color.clear)
         )
+        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+            Button(role: .destructive, action: onDelete) {
+                Label("Delete", systemImage: "trash")
+            }
+            
+            Button(action: onEdit) {
+                Label("Edit", systemImage: "pencil")
+            }
+            .tint(Theme.Colors.primary)
+        }
     }
 }
 
@@ -414,21 +442,24 @@ struct PlayerRowView: View {
 struct EditableTeamRowView: View {
     let team: Team
     let isSelected: Bool
-    let isEditMode: Bool
     let onTap: () -> Void
     let onEdit: () -> Void
     let onDelete: () -> Void
     
+    @Environment(\.editMode) private var editMode
     @StateObject private var viewModel: PlayersViewModel
     
-    init(team: Team, isSelected: Bool, isEditMode: Bool, onTap: @escaping () -> Void, onEdit: @escaping () -> Void, onDelete: @escaping () -> Void) {
+    init(team: Team, isSelected: Bool, onTap: @escaping () -> Void, onEdit: @escaping () -> Void, onDelete: @escaping () -> Void) {
         self.team = team
         self.isSelected = isSelected
-        self.isEditMode = isEditMode
         self.onTap = onTap
         self.onEdit = onEdit
         self.onDelete = onDelete
         self._viewModel = StateObject(wrappedValue: PlayersViewModel(viewContext: PersistenceController.shared.container.viewContext))
+    }
+    
+    private var isEditMode: Bool {
+        editMode?.wrappedValue == .active
     }
     
     var body: some View {
@@ -455,26 +486,11 @@ struct EditableTeamRowView: View {
             
             Spacer()
             
-            // Selection indicator
-            if isSelected {
+            // Selection indicator (only show when not in edit mode)
+            if isSelected && !isEditMode {
                 Image(systemName: "checkmark.circle.fill")
                     .foregroundColor(Theme.Colors.primary)
                     .font(.body.weight(.semibold))
-            }
-            
-            // Edit/Delete buttons in edit mode
-            if isEditMode {
-                HStack(spacing: Theme.Spacing.sm) {
-                    Button(action: onEdit) {
-                        Image(systemName: "pencil")
-                            .foregroundColor(Theme.Colors.primary)
-                    }
-                    
-                    Button(action: onDelete) {
-                        Image(systemName: "trash")
-                            .foregroundColor(Theme.Colors.error)
-                    }
-                }
             }
         }
         .padding(.vertical, Theme.Spacing.xs)
@@ -486,8 +502,18 @@ struct EditableTeamRowView: View {
         }
         .background(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.sm)
-                .fill(isSelected ? Theme.Colors.primary.opacity(0.1) : Color.clear)
+                .fill(isSelected && !isEditMode ? Theme.Colors.primary.opacity(0.1) : Color.clear)
         )
+        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+            Button(role: .destructive, action: onDelete) {
+                Label("Delete", systemImage: "trash")
+            }
+            
+            Button(action: onEdit) {
+                Label("Edit", systemImage: "pencil")
+            }
+            .tint(Theme.Colors.primary)
+        }
     }
 }
 

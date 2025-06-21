@@ -143,12 +143,6 @@ struct TeamGamesSection: View {
         return (wins, losses, ties)
     }
     
-    private var winPercentage: Double {
-        guard !games.isEmpty else { return 0.0 }
-        let adjustedWins = Double(teamRecord.wins) + (Double(teamRecord.ties) * 0.5)
-        return adjustedWins / Double(games.count)
-    }
-    
     var body: some View {
         VStack(spacing: 0) {
             // Team Header
@@ -188,13 +182,6 @@ struct TeamGamesSection: View {
                             .foregroundColor(Theme.Colors.primaryText)
                         
                         Spacer()
-                        
-                        // Win Percentage
-                        if !games.isEmpty {
-                            Text("\(Int(winPercentage * 100))%")
-                                .font(Theme.Typography.caption)
-                                .foregroundColor(Theme.Colors.secondaryText)
-                        }
                     }
                 }
                 .padding(Theme.Spacing.md)

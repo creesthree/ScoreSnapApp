@@ -113,14 +113,6 @@ class GamesViewModel: ObservableObject {
         return (wins, losses, ties, teamGames.count)
     }
     
-    func getWinPercentage(for team: Team) -> Double {
-        let record = getTeamRecord(for: team)
-        guard record.totalGames > 0 else { return 0.0 }
-        
-        let adjustedWins = Double(record.wins) + (Double(record.ties) * 0.5)
-        return adjustedWins / Double(record.totalGames)
-    }
-    
     func getRecentStreak(for team: Team, limit: Int = 5) -> (type: StreakType, count: Int) {
         guard let teamId = team.id,
               let teamGames = games[teamId] else {
@@ -171,7 +163,6 @@ class GamesViewModel: ObservableObject {
     
     func getTeamAnalytics(for team: Team) -> TeamAnalytics {
         let record = getTeamRecord(for: team)
-        let winPercentage = getWinPercentage(for: team)
         let currentStreak = getRecentStreak(for: team)
         
         return TeamAnalytics(
@@ -179,7 +170,6 @@ class GamesViewModel: ObservableObject {
             losses: record.losses,
             ties: record.ties,
             totalGames: record.totalGames,
-            winPercentage: winPercentage,
             currentStreak: currentStreak
         )
     }
@@ -209,15 +199,13 @@ struct TeamAnalytics {
     let losses: Int
     let ties: Int
     let totalGames: Int
-    let winPercentage: Double
     let currentStreak: (type: StreakType, count: Int)
     
-    init(wins: Int, losses: Int, ties: Int, totalGames: Int, winPercentage: Double, currentStreak: (type: StreakType, count: Int)) {
+    init(wins: Int, losses: Int, ties: Int, totalGames: Int, currentStreak: (type: StreakType, count: Int)) {
         self.wins = wins
         self.losses = losses
         self.ties = ties
         self.totalGames = totalGames
-        self.winPercentage = winPercentage
         self.currentStreak = currentStreak
     }
 } 

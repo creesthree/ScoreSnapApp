@@ -173,14 +173,25 @@ struct RecentGamesSection: View {
             } else if viewModel.recentGames.isEmpty {
                 EmptyGamesView()
             } else {
-                LazyVStack(spacing: Theme.Spacing.sm) {
+                // Compact games list with consistent spacing
+                VStack(spacing: Theme.Spacing.xs) {
                     ForEach(viewModel.recentGames, id: \.id) { game in
-                        GameRowView(game: game) {
+                        GameRowView(game: game, isCompact: true) {
                             onGameTap(game)
                         }
                         .padding(.horizontal, Theme.Spacing.md)
+                        
+                        // Add divider between games except for the last one
+                        if game.id != viewModel.recentGames.last?.id {
+                            Divider()
+                                .padding(.horizontal, Theme.Spacing.md)
+                        }
                     }
                 }
+                .background(Theme.Colors.cardBackground)
+                .cornerRadius(Theme.CornerRadius.md)
+                .padding(.horizontal, Theme.Spacing.md)
+                .cardStyle()
             }
             
             // Error Message

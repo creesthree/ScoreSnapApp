@@ -11,6 +11,13 @@ import CoreData
 struct GameRowView: View {
     let game: Game
     let onTap: () -> Void
+    let isCompact: Bool
+    
+    init(game: Game, isCompact: Bool = false, onTap: @escaping () -> Void) {
+        self.game = game
+        self.isCompact = isCompact
+        self.onTap = onTap
+    }
     
     private var gameResult: GameResult {
         if game.isTie {
@@ -58,13 +65,13 @@ struct GameRowView: View {
     
     var body: some View {
         Button(action: onTap) {
-            HStack(spacing: Theme.Spacing.sm) {
+            HStack(spacing: isCompact ? Theme.Spacing.xs : Theme.Spacing.sm) {
                 // Compact Game Result Indicator
                 Text(resultText)
-                    .font(Theme.Typography.caption)
+                    .font(isCompact ? .caption2 : Theme.Typography.caption)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                    .frame(width: 20, height: 20)
+                    .frame(width: isCompact ? 18 : 20, height: isCompact ? 18 : 20)
                     .background(resultColor)
                     .clipShape(Circle())
                 
@@ -72,36 +79,38 @@ struct GameRowView: View {
                 HStack {
                     // Opponent and Score
                     Text("vs \(game.opponentName ?? "Unknown")")
-                        .font(Theme.Typography.body)
+                        .font(isCompact ? Theme.Typography.caption : Theme.Typography.body)
                         .fontWeight(.medium)
                         .foregroundColor(Theme.Colors.primaryText)
                         .lineLimit(1)
                     
-                    Spacer(minLength: Theme.Spacing.sm)
+                    Spacer(minLength: Theme.Spacing.xs)
                     
                     // Score
                     Text("\(game.teamScore) - \(game.opponentScore)")
-                        .font(Theme.Typography.scoreDisplay)
+                        .font(isCompact ? Theme.Typography.callout : Theme.Typography.scoreDisplay)
                         .foregroundColor(Theme.Colors.primaryText)
                         .fontWeight(.semibold)
                     
-                    Spacer(minLength: Theme.Spacing.sm)
+                    Spacer(minLength: Theme.Spacing.xs)
                     
                     // Compact Date
                     Text(compactDateText)
-                        .font(Theme.Typography.caption)
+                        .font(.caption2)
                         .foregroundColor(Theme.Colors.secondaryText)
                         .lineLimit(1)
                 }
                 
                 // Chevron
-                Image(systemName: "chevron.right")
-                    .font(.caption2)
-                    .foregroundColor(Theme.Colors.secondaryText)
+                if !isCompact {
+                    Image(systemName: "chevron.right")
+                        .font(.caption2)
+                        .foregroundColor(Theme.Colors.secondaryText)
+                }
             }
-            .padding(Theme.Spacing.sm)
-            .background(Theme.Colors.cardBackground)
-            .cornerRadius(Theme.CornerRadius.sm)
+            .padding(isCompact ? Theme.Spacing.xs : Theme.Spacing.sm)
+            .background(isCompact ? Color.clear : Theme.Colors.cardBackground)
+            .cornerRadius(isCompact ? 0 : Theme.CornerRadius.sm)
         }
         .buttonStyle(PlainButtonStyle())
     }

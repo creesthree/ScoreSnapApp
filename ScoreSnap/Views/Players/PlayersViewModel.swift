@@ -15,7 +15,6 @@ class PlayersViewModel: ObservableObject {
     @Published var teams: [Team] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
-    @Published var isEditMode = false
     
     private let viewContext: NSManagedObjectContext
     private var cancellables = Set<AnyCancellable>()

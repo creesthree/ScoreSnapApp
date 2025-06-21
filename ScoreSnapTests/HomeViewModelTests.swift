@@ -204,15 +204,6 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(record.wins + record.losses + record.ties, record.totalGames, "Wins + losses + ties should equal total")
     }
     
-    func testWinPercentageCalculation() throws {
-        // When
-        let winPercentage = viewModel.getWinPercentage(for: testTeam)
-        
-        // Then
-        XCTAssertGreaterThanOrEqual(winPercentage, 0.0, "Win percentage should be >= 0")
-        XCTAssertLessThanOrEqual(winPercentage, 1.0, "Win percentage should be <= 1")
-    }
-    
     func testDataRefresh() throws {
         // Given
         viewModel.fetchRecentGames(for: testTeam)

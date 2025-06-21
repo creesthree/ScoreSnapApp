@@ -93,15 +93,6 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func getWinPercentage(for team: Team?) -> Double {
-        let record = getTeamRecord(for: team)
-        guard record.totalGames > 0 else { return 0.0 }
-        
-        // Ties count as half wins for win percentage
-        let adjustedWins = Double(record.wins) + (Double(record.ties) * 0.5)
-        return adjustedWins / Double(record.totalGames)
-    }
-    
     // MARK: - Recent Game Trends
     
     func getRecentStreak(for team: Team?, limit: Int = 5) -> (type: StreakType, count: Int) {

@@ -30,15 +30,6 @@ struct TeamRecordView: View {
         return (wins, losses, ties)
     }
     
-    private var winPercentage: Double {
-        let totalGames = games.count
-        guard totalGames > 0 else { return 0.0 }
-        let wins = record.wins
-        let ties = record.ties
-        // Ties count as half wins for win percentage
-        return Double(wins) + (Double(ties) * 0.5) / Double(totalGames)
-    }
-    
     var body: some View {
         VStack(spacing: Theme.Spacing.sm) {
             HStack {
@@ -47,12 +38,6 @@ struct TeamRecordView: View {
                     .foregroundColor(Theme.Colors.primaryText)
                 
                 Spacer()
-                
-                if games.count > 0 {
-                    Text("\(Int(winPercentage * 100))%")
-                        .font(Theme.Typography.caption)
-                        .foregroundColor(Theme.Colors.secondaryText)
-                }
             }
             
             if games.isEmpty {

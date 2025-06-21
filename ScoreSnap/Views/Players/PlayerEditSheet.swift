@@ -10,18 +10,21 @@ import SwiftUI
 struct PlayerEditSheet: View {
     let player: Player?
     let onSave: (String, TeamColor, String) -> Void
+    let onDelete: (() -> Void)?
     
     @Environment(\.dismiss) private var dismiss
     @State private var name: String = ""
     @State private var selectedColor: TeamColor = Constants.Defaults.defaultPlayerColor
     @State private var showingValidationAlert = false
     @State private var validationMessage = ""
+    @State private var showingDeleteConfirmation = false
     
     @StateObject private var viewModel: PlayersViewModel
     
-    init(player: Player?, onSave: @escaping (String, TeamColor, String) -> Void) {
+    init(player: Player?, onSave: @escaping (String, TeamColor, String) -> Void, onDelete: (() -> Void)? = nil) {
         self.player = player
         self.onSave = onSave
+        self.onDelete = onDelete
         self._viewModel = StateObject(wrappedValue: PlayersViewModel(viewContext: PersistenceController.shared.container.viewContext))
         
         // Initialize state with player data if editing
@@ -59,6 +62,21 @@ struct PlayerEditSheet: View {
                         }
                     }
                 }
+                
+                // Delete section - only show when editing existing player
+                if player != nil {
+                    Section {
+                        Button(action: {
+                            showingDeleteConfirmation = true
+                        }) {
+                            HStack {
+                                Image(systemName: "trash")
+                                Text("Delete Player")
+                            }
+                            .foregroundColor(.red)
+                        }
+                    }
+                }
             }
             .navigationTitle(player == nil ? "Add Player" : "Edit Player")
             .navigationBarTitleDisplayMode(.inline)
@@ -80,6 +98,15 @@ struct PlayerEditSheet: View {
                 Button("OK", role: .cancel) { }
             } message: {
                 Text(validationMessage)
+            }
+            .alert("Delete Player", isPresented: $showingDeleteConfirmation) {
+                Button("Delete", role: .destructive) {
+                    onDelete?()
+                    dismiss()
+                }
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("Are you sure you want to delete this player? This will also delete all associated teams and games. This action cannot be undone.")
             }
         }
     }
